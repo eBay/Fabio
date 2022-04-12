@@ -128,11 +128,12 @@ func serviceRegistration(cfg *config.Consul, serviceName string) (*api.AgentServ
 	}
 
 	service := &api.AgentServiceRegistration{
-		ID:      serviceID,
-		Name:    serviceName,
-		Address: ip.String(),
-		Port:    port,
-		Tags:    cfg.ServiceTags,
+		ID:        serviceID,
+		Name:      serviceName,
+		Address:   ip.String(),
+		Port:      port,
+		Tags:      cfg.ServiceTags,
+		Namespace: cfg.Namespace,
 		// Set the checks for the service.
 		//
 		// Both checks must pass for Consul to consider the service healthy and therefore serve the fabio instance to clients.

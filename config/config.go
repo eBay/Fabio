@@ -154,6 +154,7 @@ type Consul struct {
 	NoRouteHTMLPath    string
 	TagPrefix          string
 	Register           bool
+	Namespace          string
 	ServiceAddr        string
 	ServiceName        string
 	ServiceTags        []string

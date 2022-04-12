@@ -643,6 +643,13 @@ func TestLoad(t *testing.T) {
 			},
 		},
 		{
+			args: []string{"-registry.consul.namespace", "ns1"},
+			cfg: func(cfg *Config) *Config {
+				cfg.Registry.Consul.Namespace = "ns1"
+				return cfg
+			},
+		},
+		{
 			args: []string{"-registry.consul.register.addr", "1.2.3.4:5555"},
 			cfg: func(cfg *Config) *Config {
 				cfg.Registry.Consul.ServiceAddr = "1.2.3.4:5555"

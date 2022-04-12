@@ -186,6 +186,7 @@ func load(cmdline, environ, envprefix []string, props *properties.Properties) (c
 	f.StringVar(&cfg.Registry.Consul.TLS.CAPath, "registry.consul.tls.capath", defaultConfig.Registry.Consul.TLS.CAPath, "path to consul CA directory")
 	f.BoolVar(&cfg.Registry.Consul.TLS.InsecureSkipVerify, "registry.consul.tls.insecureskipverify", defaultConfig.Registry.Consul.TLS.InsecureSkipVerify, "is tls check enabled")
 	f.BoolVar(&cfg.Registry.Consul.Register, "registry.consul.register.enabled", defaultConfig.Registry.Consul.Register, "register fabio in consul")
+	f.StringVar(&cfg.Registry.Consul.Namespace, "registry.consul.namespace", defaultConfig.Registry.Consul.Namespace, "consul namespace in which fabio is active")
 	f.StringVar(&cfg.Registry.Consul.ServiceAddr, "registry.consul.register.addr", "<ui.addr>", "service registration address")
 	f.StringVar(&cfg.Registry.Consul.ServiceName, "registry.consul.register.name", defaultConfig.Registry.Consul.ServiceName, "service registration name")
 	f.StringSliceVar(&cfg.Registry.Consul.ServiceTags, "registry.consul.register.tags", defaultConfig.Registry.Consul.ServiceTags, "service registration tags")

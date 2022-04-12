@@ -20,7 +20,7 @@ type be struct {
 
 func NewBackend(cfg *config.Consul) (registry.Backend, error) {
 
-	consulCfg := &api.Config{Address: cfg.Addr, Scheme: cfg.Scheme, Token: cfg.Token}
+	consulCfg := &api.Config{Address: cfg.Addr, Scheme: cfg.Scheme, Token: cfg.Token, Namespace: cfg.Namespace}
 	if cfg.Scheme == "https" {
 		consulCfg.TLSConfig.KeyFile = cfg.TLS.KeyFile
 		consulCfg.TLSConfig.CertFile = cfg.TLS.CertFile
@@ -43,6 +43,11 @@ func NewBackend(cfg *config.Consul) (registry.Backend, error) {
 
 	// we're good
 	log.Printf("[INFO] consul: Connecting to %q in datacenter %q", cfg.Addr, dc)
+	if cfg.Namespace != "" {
+		log.Printf("[INFO] consul: Connecting to namespace %q", cfg.Namespace)
+	} else {
+		log.Printf("[INFO] consul: Connecting to default namespace")
+	}
 	return &be{c: c, dc: dc, cfg: cfg}, nil
 }
 
