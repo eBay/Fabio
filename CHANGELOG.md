@@ -1,1284 +1,1254 @@
-## Changelog
+# Changelog
 
-### [v1.6.3](https://github.com/fabiolb/fabio/releases/tag/v1.6.3) - 9 December 2022
+## [v1.6.4](https://github.com/fabiolb/fabio/tree/v1.6.4) (2024-11-27)
 
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.6.3...v1.6.4)
 
-#### Improvements
+**Closed issues:**
 
-* [PR #907] - Add option to make admin source links clickable. (@KTruesdellENA @Kamilcuk)
-* [PR #909] - Add integration with gobgp so that we can publish anycast addresses. (@nathanejohnson)
+- CI pipeline to run testsuite [\#949](https://github.com/fabiolb/fabio/issues/949)
+- Fabio not exporting all the metrics with prometheus [\#947](https://github.com/fabiolb/fabio/issues/947)
+- certificates - cert and ca chain/intermediate [\#946](https://github.com/fabiolb/fabio/issues/946)
+- This repository is unmaintaned. [\#944](https://github.com/fabiolb/fabio/issues/944)
+- CVE-2023-44487 HTTP/2 rapid reset [\#939](https://github.com/fabiolb/fabio/issues/939)
+- TCP no route - cant balance tcp [\#936](https://github.com/fabiolb/fabio/issues/936)
+- windows: setting logging path in fabio properties [\#920](https://github.com/fabiolb/fabio/issues/920)
+- Port range in the proxy.addr [\#529](https://github.com/fabiolb/fabio/issues/529)
 
-#### Bug Fixes
+**Merged pull requests:**
 
-* [PR #908] - Change the shutdown procedure to deregister fabio from the registry and then shutdown the proxy (@martinivanov)
-* [PR #917 Bug #916] - Don't use "dst" literal as sni name on https backends with host=dst is set
+- Add GoReleaser workflow. [\#958](https://github.com/fabiolb/fabio/pull/958) ([tristanmorgan](https://github.com/tristanmorgan))
+- go-kit/kit/log go-kit/log [\#956](https://github.com/fabiolb/fabio/pull/956) ([tristanmorgan](https://github.com/tristanmorgan))
+- Update go-retryablehttp to fix warning. [\#954](https://github.com/fabiolb/fabio/pull/954) ([tristanmorgan](https://github.com/tristanmorgan))
+- Update and try fix GH Pages publish action. [\#953](https://github.com/fabiolb/fabio/pull/953) ([tristanmorgan](https://github.com/tristanmorgan))
+- Update go version, test binaries and package versions. [\#952](https://github.com/fabiolb/fabio/pull/952) ([tristanmorgan](https://github.com/tristanmorgan))
+- Remove vendored modules in favour of go mod. [\#951](https://github.com/fabiolb/fabio/pull/951) ([tristanmorgan](https://github.com/tristanmorgan))
+- Update Github runner image. [\#950](https://github.com/fabiolb/fabio/pull/950) ([tristanmorgan](https://github.com/tristanmorgan))
+- fix: close resp body [\#945](https://github.com/fabiolb/fabio/pull/945) ([testwill](https://github.com/testwill))
+- Trim leading and trailing spaces from service tags [\#943](https://github.com/fabiolb/fabio/pull/943) ([logocomune](https://github.com/logocomune))
+- Fix doubled download a Vault file [\#942](https://github.com/fabiolb/fabio/pull/942) ([aleksraiden](https://github.com/aleksraiden))
+- Remove deprecated ioutil [\#940](https://github.com/fabiolb/fabio/pull/940) ([tristanmorgan](https://github.com/tristanmorgan))
+- Dockerfile: add CAP\_NET\_BIND\_SERVICE+eip to fabio to allow running as root [\#938](https://github.com/fabiolb/fabio/pull/938) ([Kamilcuk](https://github.com/Kamilcuk))
+- Consul registry performance improvements [\#928](https://github.com/fabiolb/fabio/pull/928) ([ddreier](https://github.com/ddreier))
+- \[Docs\] Fix wrong parameter name [\#914](https://github.com/fabiolb/fabio/pull/914) ([KEANO89](https://github.com/KEANO89))
+- Updating grpc handler to gracefully close backend connections [\#913](https://github.com/fabiolb/fabio/pull/913) ([nathanejohnson](https://github.com/nathanejohnson))
 
-### [v1.6.2](https://github.com/fabiolb/fabio/releases/tag/v1.6.2) - 13 September 2022
+## [v1.6.3](https://github.com/fabiolb/fabio/tree/v1.6.3) (2022-12-09)
 
-* [Issue #903 PR #904](https://github.com/fabiolb/fabio/pull/904) - Improve TLS Cipher Suite parser in the config 
-  loader to handle modern TLS 1.3 cipher suites.  This should no longer require manual updating of code as new 
-  cipher suites are added to the standard library crypto/tls package.
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.6.2...v1.6.3)
 
-### [v1.6.1](https://github.com/fabiolb/fabio/releases/tag/v1.6.1) - 14 July 2022
+**Implemented enhancements:**
 
-#### Improvements
+- Feature request: Make source links in ui interface clickable [\#901](https://github.com/fabiolb/fabio/issues/901)
 
-* [PR #811](https://github.com/fabiolb/fabio/pull/811) - Add command line flag to toggle required
-    consistency on consul reads. (@jeremycw)
-* [PR #860](https://github.com/fabiolb/fabio/pull/860) - Fix x-forwarded-for header processing for
-    ws connections. (@bn0ir)
-* [PR #854](https://github.com/fabiolb/fabio/pull/854) - Update registry documentation for custom type. (@webmutation)
-* [Issue #873](https://github.com/fabiolb/fabio/issues/873) - Bump version of go-diff dependency to fix reported
-  crash. (@ddreier @nathanejohnson)
-* [PR #816](https://github.com/fabiolb/fabio/pull/816) - Fix memory leak around GRPC connections. (@nathanejohnson)
-* [PR #884](https://github.com/fabiolb/fabio/pull/884) - Fix CSS issue in clipboards in hugo docs (@KTruesdellENA)
-* [PR #875](https://github.com/fabiolb/fabio/pull/875) - Build multi-arch Docker images for amd64 and arm64
-  architectures (@vamc19)
-* [PR #885](https://github.com/fabiolb/fabio/pull/885) - Moved admin UI assets to use go embed. (@nathanejohnson)
-* [Issue #866](https://github.com/fabiolb/fabio/issues/886) - Fixed issue where admin UI overrides were not working 
-  properly. (@nathanejohnson @KTruesdellENA)
-* [Issue #858](https://github.com/fabiolb/fabio/issues/858) - Add option to specify TLS 1.3 for min and max version 
-  (@dcarbone @nathanejohnson)
-* [PR #896](https://github.com/fabiolb/fabio/pull/896) - Set SNI to match host for https routes (@KTruesdellENA)
-* [Issue #872](https://github.com/fabiolb/fabio/issues/872) - Crash on using rnd stratgy on 32 bit platforms fixed 
-  (@sbrl @nathanejohnson)
+**Closed issues:**
 
-#### Breaking Changes
+- Ignore host=dst when backend is https [\#916](https://github.com/fabiolb/fabio/issues/916)
+- poll new feature requests [\#910](https://github.com/fabiolb/fabio/issues/910)
+- Fabio Clustering. [\#668](https://github.com/fabiolb/fabio/issues/668)
+
+**Merged pull requests:**
+
+- Disable BGP functionality on Windows since gobgp does not support this. [\#919](https://github.com/fabiolb/fabio/pull/919) ([nathanejohnson](https://github.com/nathanejohnson))
+- updating CHANGELOG [\#918](https://github.com/fabiolb/fabio/pull/918) ([nathanejohnson](https://github.com/nathanejohnson))
+- Don't use "dst" literal as sni name when host=dst is specified on https backends [\#917](https://github.com/fabiolb/fabio/pull/917) ([nathanejohnson](https://github.com/nathanejohnson))
+- add feature to advertise anycast addresses via BGP [\#909](https://github.com/fabiolb/fabio/pull/909) ([nathanejohnson](https://github.com/nathanejohnson))
+- Change the shutdown procedure to deregister fabio from the registry and then shutdown the proxy [\#908](https://github.com/fabiolb/fabio/pull/908) ([martinivanov](https://github.com/martinivanov))
+- Feature/source link [\#907](https://github.com/fabiolb/fabio/pull/907) ([KTruesdellENA](https://github.com/KTruesdellENA))
+
+## [v1.6.2](https://github.com/fabiolb/fabio/tree/v1.6.2) (2022-09-13)
+
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.6.1...v1.6.2)
+
+**Closed issues:**
+
+- Update TLS cipher parser to include modern ciphers [\#903](https://github.com/fabiolb/fabio/issues/903)
+- Custom behavior for the situation when the service has no healthy instances [\#898](https://github.com/fabiolb/fabio/issues/898)
+
+**Merged pull requests:**
+
+- update README for v1.6.2 release [\#905](https://github.com/fabiolb/fabio/pull/905) ([nathanejohnson](https://github.com/nathanejohnson))
+- Updating TLS cipher config parser to include TLS 1.3 constants. [\#904](https://github.com/fabiolb/fabio/pull/904) ([nathanejohnson](https://github.com/nathanejohnson))
+
+## [v1.6.1](https://github.com/fabiolb/fabio/tree/v1.6.1) (2022-07-19)
+
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.6.0...v1.6.1)
+
+**Implemented enhancements:**
+
+- Multi-DC fabio [\#115](https://github.com/fabiolb/fabio/issues/115)
+
+**Fixed bugs:**
+
+- Crash: invalid log msg: http2: panic serving CLIENT\_IP:CLIENT\_PORT: runtime error: index out of range \[-1\] [\#872](https://github.com/fabiolb/fabio/issues/872)
+
+**Closed issues:**
+
+- admin UI Overrides not working [\#886](https://github.com/fabiolb/fabio/issues/886)
+- Panic on created prometheus metric name [\#878](https://github.com/fabiolb/fabio/issues/878)
+- Crash on route update: panic: runtime error: index out of range, diffmatchpatch.\(\*DiffMatchPatch\).DiffCharsToLines [\#873](https://github.com/fabiolb/fabio/issues/873)
+- Experiencing 502's [\#862](https://github.com/fabiolb/fabio/issues/862)
+- Fabio immediately drop routes when consul agent unavailable for a while [\#861](https://github.com/fabiolb/fabio/issues/861)
+- \[proxy/tls\] Update supported TLS versions and cipher suites [\#858](https://github.com/fabiolb/fabio/issues/858)
+- JSON schema is incorrect in website Dest should be Dst [\#852](https://github.com/fabiolb/fabio/issues/852)
+- \[question\] URL for TLS destination [\#850](https://github.com/fabiolb/fabio/issues/850)
+- \[Feature\] Possibility of adding arm/arm64 docker builds. [\#833](https://github.com/fabiolb/fabio/issues/833)
+
+**Merged pull requests:**
+
+- Release/v1.6.1 [\#897](https://github.com/fabiolb/fabio/pull/897) ([nathanejohnson](https://github.com/nathanejohnson))
+- setting sni to match host [\#896](https://github.com/fabiolb/fabio/pull/896) ([KTruesdellENA](https://github.com/KTruesdellENA))
+- Update random picker to use math/rand's Intn function [\#893](https://github.com/fabiolb/fabio/pull/893) ([nathanejohnson](https://github.com/nathanejohnson))
+- add configurable grpc message sizes to \#632 [\#890](https://github.com/fabiolb/fabio/pull/890) ([nathanejohnson](https://github.com/nathanejohnson))
+- add tls13 [\#889](https://github.com/fabiolb/fabio/pull/889) ([nathanejohnson](https://github.com/nathanejohnson))
+- update materialize bits. see issue \#886 [\#888](https://github.com/fabiolb/fabio/pull/888) ([nathanejohnson](https://github.com/nathanejohnson))
+- Moved admin UI assets to use go embed [\#885](https://github.com/fabiolb/fabio/pull/885) ([nathanejohnson](https://github.com/nathanejohnson))
+- update the custom css [\#884](https://github.com/fabiolb/fabio/pull/884) ([KTruesdellENA](https://github.com/KTruesdellENA))
+- Bump go-diff dependency version to 1.2.0.  Fixes \#873 [\#881](https://github.com/fabiolb/fabio/pull/881) ([nathanejohnson](https://github.com/nathanejohnson))
+- bump HUGO version to 0.101.0 [\#880](https://github.com/fabiolb/fabio/pull/880) ([nathanejohnson](https://github.com/nathanejohnson))
+- add docs from PR \#854 to fabio.properties [\#879](https://github.com/fabiolb/fabio/pull/879) ([nathanejohnson](https://github.com/nathanejohnson))
+- Build multi-arch Docker images for amd64 and arm64 architectures [\#875](https://github.com/fabiolb/fabio/pull/875) ([vamc19](https://github.com/vamc19))
+- Fix x-forwarded-for header processing for ws connections [\#860](https://github.com/fabiolb/fabio/pull/860) ([bn0ir](https://github.com/bn0ir))
+- Update registry.backend.md [\#854](https://github.com/fabiolb/fabio/pull/854) ([webmutation](https://github.com/webmutation))
+- Resulting complete routing table has no 'tags "a,b"'  in last line [\#841](https://github.com/fabiolb/fabio/pull/841) ([hb9cwp](https://github.com/hb9cwp))
+- fixes \#807 - changes map for grpc connections to be a string key [\#816](https://github.com/fabiolb/fabio/pull/816) ([nathanejohnson](https://github.com/nathanejohnson))
+- Add command line flag to toggle required consistency on consul reads [\#811](https://github.com/fabiolb/fabio/pull/811) ([jeremycw](https://github.com/jeremycw))
+- Issue 605 grpc host matching [\#632](https://github.com/fabiolb/fabio/pull/632) ([tommyalatalo](https://github.com/tommyalatalo))
+
+## [v1.6.0](https://github.com/fabiolb/fabio/tree/v1.6.0) (2022-04-11)
+
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.5.15...v1.6.0)
+
+**Implemented enhancements:**
+
+- Add support for influxdb metrics [\#253](https://github.com/fabiolb/fabio/issues/253)
+- Support for prometheus [\#211](https://github.com/fabiolb/fabio/issues/211)
+- Support dogstatd with tags [\#165](https://github.com/fabiolb/fabio/issues/165)
+- Riemann metrics support [\#126](https://github.com/fabiolb/fabio/issues/126)
+- Simple HTTP path prefix replacement [\#767](https://github.com/fabiolb/fabio/pull/767) ([JamesJJ](https://github.com/JamesJJ))
+
+**Closed issues:**
+
+- Consul Route updates very slow with large numbers of routes [\#865](https://github.com/fabiolb/fabio/issues/865)
+- Restricting TLS versions [\#859](https://github.com/fabiolb/fabio/issues/859)
+- \[admin/ui\] General updates [\#856](https://github.com/fabiolb/fabio/issues/856)
+- \[question\] - Can Fabio listen on 80/tcp with Nomad [\#844](https://github.com/fabiolb/fabio/issues/844)
+- Supporting requests in the form of /my-app/page1 [\#842](https://github.com/fabiolb/fabio/issues/842)
+- Fabio Using Container IPs to create routes [\#839](https://github.com/fabiolb/fabio/issues/839)
+- All my dynamic routes suddenly vanished! [\#837](https://github.com/fabiolb/fabio/issues/837)
+- Fabio redirecting to /routes on own service [\#832](https://github.com/fabiolb/fabio/issues/832)
+- docu fabio configure TLS/SSL\(HTTPS\) understanding problem [\#827](https://github.com/fabiolb/fabio/issues/827)
+- Crash: \[FATAL\] 1.5.13. strconv.ParseUint: parsing ":1883;PROTO=TCP-DYNAMIC": invalid syntax [\#826](https://github.com/fabiolb/fabio/issues/826)
+- strip doesn't work as expected on redirect [\#824](https://github.com/fabiolb/fabio/issues/824)
+- Using Fabio with Consul over mTLS [\#820](https://github.com/fabiolb/fabio/issues/820)
+- Switch to github actions [\#817](https://github.com/fabiolb/fabio/issues/817)
+- Panic - httputil: ReverseProxy read error during body copy [\#814](https://github.com/fabiolb/fabio/issues/814)
+- Support for Consul and Vault Namespaces [\#810](https://github.com/fabiolb/fabio/issues/810)
+- grpc be closed when uninstall service target [\#807](https://github.com/fabiolb/fabio/issues/807)
+- fabio binary filename for download [\#805](https://github.com/fabiolb/fabio/issues/805)
+- Add arm64 arch [\#804](https://github.com/fabiolb/fabio/issues/804)
+- Can Fabio to prefer one ethernet interface for proxy\_addr? [\#802](https://github.com/fabiolb/fabio/issues/802)
+- TCP Dynamic Proxy route without specifying exact IP? [\#797](https://github.com/fabiolb/fabio/issues/797)
+- \[Question\] What are opinions on allowing stale reads of Consul Catalog [\#764](https://github.com/fabiolb/fabio/issues/764)
+- Simple HTTP path prefix replacement [\#691](https://github.com/fabiolb/fabio/issues/691)
+- Does Fabio support multiple CS Stores per listener? [\#666](https://github.com/fabiolb/fabio/issues/666)
+- \[Question\] Stats - Status code per service [\#371](https://github.com/fabiolb/fabio/issues/371)
+- Statsd output is not good [\#327](https://github.com/fabiolb/fabio/issues/327)
+- Send metrics to cloudwatch [\#326](https://github.com/fabiolb/fabio/issues/326)
+- Mixing of HTTPS proxying and SNI+TCP on a single port [\#213](https://github.com/fabiolb/fabio/issues/213)
+
+**Merged pull requests:**
+
+- gofmt [\#870](https://github.com/fabiolb/fabio/pull/870) ([nathanejohnson](https://github.com/nathanejohnson))
+- updating x/sys [\#869](https://github.com/fabiolb/fabio/pull/869) ([nathanejohnson](https://github.com/nathanejohnson))
+- update go and alpine versions [\#868](https://github.com/fabiolb/fabio/pull/868) ([Netlims](https://github.com/Netlims))
+- \#865 Move the route table sort into NewTable so that it only happens once. [\#867](https://github.com/fabiolb/fabio/pull/867) ([ddreier](https://github.com/ddreier))
+- removing exclusion of arm64 mac build.  Fixes \#804 [\#866](https://github.com/fabiolb/fabio/pull/866) ([nathanejohnson](https://github.com/nathanejohnson))
+- Fix example commands in registry.consul.kvpath [\#864](https://github.com/fabiolb/fabio/pull/864) ([blake](https://github.com/blake))
+- Add IdleConnTimeout configurable for http transport [\#863](https://github.com/fabiolb/fabio/pull/863) ([aal89](https://github.com/aal89))
+- admin/ui updates: [\#857](https://github.com/fabiolb/fabio/pull/857) ([dcarbone](https://github.com/dcarbone))
+- Update 2 broken links in documentation [\#822](https://github.com/fabiolb/fabio/pull/822) ([mig4ng](https://github.com/mig4ng))
+- Fix small typo in README.md [\#821](https://github.com/fabiolb/fabio/pull/821) ([mig4ng](https://github.com/mig4ng))
+- Add support for github actions [\#819](https://github.com/fabiolb/fabio/pull/819) ([nathanejohnson](https://github.com/nathanejohnson))
+- Remove golang toolchain name from release binary names [\#818](https://github.com/fabiolb/fabio/pull/818) ([nathanejohnson](https://github.com/nathanejohnson))
+- we don't use Fabio [\#813](https://github.com/fabiolb/fabio/pull/813) ([hsmade](https://github.com/hsmade))
+- Updating tcp dynamic proxy to match on routes that are port only [\#806](https://github.com/fabiolb/fabio/pull/806) ([nathanejohnson](https://github.com/nathanejohnson))
+- Refactor metrics [\#476](https://github.com/fabiolb/fabio/pull/476) ([magiconair](https://github.com/magiconair))
+
+## [v1.5.15](https://github.com/fabiolb/fabio/tree/v1.5.15) (2020-12-01)
+
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.5.14...v1.5.15)
+
+**Closed issues:**
+
+- TCP Dynamic Proxy is not releasing ports from deregistered services [\#796](https://github.com/fabiolb/fabio/issues/796)
+- How to configure log file output path [\#781](https://github.com/fabiolb/fabio/issues/781)
+
+**Merged pull requests:**
+
+- Updating the default GOGC to 100.  800 proves to be a bit insane. [\#803](https://github.com/fabiolb/fabio/pull/803) ([nathanejohnson](https://github.com/nathanejohnson))
+- Stop dynamic TCP listener when upstream is no longer available [\#798](https://github.com/fabiolb/fabio/pull/798) ([fwkz](https://github.com/fwkz))
+- Updating dependencies [\#794](https://github.com/fabiolb/fabio/pull/794) ([nathanejohnson](https://github.com/nathanejohnson))
+- Update CHANGELOG.md [\#790](https://github.com/fabiolb/fabio/pull/790) ([stevenscg](https://github.com/stevenscg))
+
+## [v1.5.14](https://github.com/fabiolb/fabio/tree/v1.5.14) (2020-09-09)
+
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.5.13...v1.5.14)
+
+**Fixed bugs:**
+
+- %20 in route is causing route mismatch,  regression in 1.5.2 , works with 1.3.7 [\#347](https://github.com/fabiolb/fabio/issues/347)
+
+**Closed issues:**
+
+- matchingHostNoGlob sometimes returns incorrect matched host [\#786](https://github.com/fabiolb/fabio/issues/786)
+- Add support for HTTPS+TCP+SNI on the same listener [\#783](https://github.com/fabiolb/fabio/issues/783)
+- SIGTERM + Gracefully closing connections [\#782](https://github.com/fabiolb/fabio/issues/782)
+- passing multiple routes via command line [\#776](https://github.com/fabiolb/fabio/issues/776)
+- Master branch build failing with SECURITY ERROR [\#769](https://github.com/fabiolb/fabio/issues/769)
+- How to disable client authentication for https? [\#765](https://github.com/fabiolb/fabio/issues/765)
+- Must Access Control require RemoteAddr matching? [\#754](https://github.com/fabiolb/fabio/issues/754)
+- Fabio Proxy \(localhost:9999\) Showing Blank White Screen [\#752](https://github.com/fabiolb/fabio/issues/752)
+- Fabio 1.5.13 - no more "\[INFO\] Config updates" message in the logs [\#751](https://github.com/fabiolb/fabio/issues/751)
+- Authentication issue. [\#743](https://github.com/fabiolb/fabio/issues/743)
+- Connecting to HTTPS Upstream service. [\#738](https://github.com/fabiolb/fabio/issues/738)
+- log.routes.format is broken with 1.5.13 [\#737](https://github.com/fabiolb/fabio/issues/737)
+- Looking for a new maintainer [\#735](https://github.com/fabiolb/fabio/issues/735)
+- GRPC Proxy + HTTP Proxy, both useable at the same time? [\#734](https://github.com/fabiolb/fabio/issues/734)
+- Trace spans all have the same operation name [\#732](https://github.com/fabiolb/fabio/issues/732)
+-  consul: Error fetching config from /fabio/config. Get  [\#729](https://github.com/fabiolb/fabio/issues/729)
+- Very frequent 502 errors  [\#721](https://github.com/fabiolb/fabio/issues/721)
+- Fabio decodes URL path parameters [\#486](https://github.com/fabiolb/fabio/issues/486)
+- http proxy error context canceled [\#264](https://github.com/fabiolb/fabio/issues/264)
+
+**Merged pull requests:**
+
+- Fixing issue \#786 - matchingHostNoGlob sometimes returns incorrect host [\#787](https://github.com/fabiolb/fabio/pull/787) ([nathanejohnson](https://github.com/nathanejohnson))
+- updating documentation for pending 1.5.14 release [\#785](https://github.com/fabiolb/fabio/pull/785) ([nathanejohnson](https://github.com/nathanejohnson))
+- https+tcp+sni listener support [\#784](https://github.com/fabiolb/fabio/pull/784) ([nathanejohnson](https://github.com/nathanejohnson))
+- chore: fix typo in comments [\#775](https://github.com/fabiolb/fabio/pull/775) ([josgraha](https://github.com/josgraha))
+- \(docs\): fixed small error [\#774](https://github.com/fabiolb/fabio/pull/774) ([0xflotus](https://github.com/0xflotus))
+- Preserve table state by storing buffer table in fixed strings. [\#749](https://github.com/fabiolb/fabio/pull/749) ([aaronhurt](https://github.com/aaronhurt))
+- only deploy once per build [\#747](https://github.com/fabiolb/fabio/pull/747) ([aaronhurt](https://github.com/aaronhurt))
+- switch to github pages for doc hosting [\#746](https://github.com/fabiolb/fabio/pull/746) ([aaronhurt](https://github.com/aaronhurt))
+- minor transition updates and small fixes [\#745](https://github.com/fabiolb/fabio/pull/745) ([aaronhurt](https://github.com/aaronhurt))
+- switch back to travis CI [\#744](https://github.com/fabiolb/fabio/pull/744) ([nathanejohnson](https://github.com/nathanejohnson))
+- follow hugo best practices [\#742](https://github.com/fabiolb/fabio/pull/742) ([aaronhurt](https://github.com/aaronhurt))
+- Documentation updates for project transition. [\#740](https://github.com/fabiolb/fabio/pull/740) ([aaronhurt](https://github.com/aaronhurt))
+- Fix infinite buffering of SSE responses when gzip is enabled [\#739](https://github.com/fabiolb/fabio/pull/739) ([ctlajoie](https://github.com/ctlajoie))
+- Add missing \<svc\> entry to example route [\#733](https://github.com/fabiolb/fabio/pull/733) ([BenjaminHerbert](https://github.com/BenjaminHerbert))
+- minor fixups [\#731](https://github.com/fabiolb/fabio/pull/731) ([aaronhurt](https://github.com/aaronhurt))
+- fix tests [\#730](https://github.com/fabiolb/fabio/pull/730) ([aaronhurt](https://github.com/aaronhurt))
+- Add HTTP method and path to trace span operation name [\#715](https://github.com/fabiolb/fabio/pull/715) ([hobochili](https://github.com/hobochili))
+- Deprecate deregisterCriticalServiceAfter option [\#674](https://github.com/fabiolb/fabio/pull/674) ([pschultz](https://github.com/pschultz))
+- Issue 647 NormalizeHost [\#648](https://github.com/fabiolb/fabio/pull/648) ([murphymj25](https://github.com/murphymj25))
+- Handle context canceled errors + better http proxy error handling [\#644](https://github.com/fabiolb/fabio/pull/644) ([danlsgiga](https://github.com/danlsgiga))
+- Added idleTimout to config and to serve.go HTTP server [\#635](https://github.com/fabiolb/fabio/pull/635) ([galen0624](https://github.com/galen0624))
+- Issue 613 tcp dynamic [\#626](https://github.com/fabiolb/fabio/pull/626) ([murphymj25](https://github.com/murphymj25))
+- Issue 554 Added compiled glob matching using LRU Cache [\#615](https://github.com/fabiolb/fabio/pull/615) ([galen0624](https://github.com/galen0624))
+- Issue 558 - Add Polling Interval From Fabio to Consul to Fabio Config [\#572](https://github.com/fabiolb/fabio/pull/572) ([galen0624](https://github.com/galen0624))
+- Feat: Pass encoded characters in path unchanged [\#489](https://github.com/fabiolb/fabio/pull/489) ([valentin-krasontovitsch](https://github.com/valentin-krasontovitsch))
+
+## [v1.5.13](https://github.com/fabiolb/fabio/tree/v1.5.13) (2019-11-18)
+
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.5.12...v1.5.13)
+
+**Closed issues:**
+
+- Fabio 1.5.12 - panic: runtime error: invalid memory address or nil pointer dereference [\#719](https://github.com/fabiolb/fabio/issues/719)
+- Question: Load balancing WebSocket connections [\#718](https://github.com/fabiolb/fabio/issues/718)
+- Question: resources \(css, js files\) by multiple sites [\#717](https://github.com/fabiolb/fabio/issues/717)
+- Fabio UI not displaying when hit on a DNS name [\#712](https://github.com/fabiolb/fabio/issues/712)
+- Unable to route to websites [\#676](https://github.com/fabiolb/fabio/issues/676)
+- Websocket proxy timeouts [\#518](https://github.com/fabiolb/fabio/issues/518)
+
+**Merged pull requests:**
+
+- fix nil-pointer dereference in detailed config log [\#720](https://github.com/fabiolb/fabio/pull/720) ([pschultz](https://github.com/pschultz))
+- Safely handle missing cert from Vault KV store [\#710](https://github.com/fabiolb/fabio/pull/710) ([dradtke](https://github.com/dradtke))
+
+## [v1.5.12](https://github.com/fabiolb/fabio/tree/v1.5.12) (2019-10-11)
+
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.5.11...v1.5.12)
+
+**Implemented enhancements:**
+
+- docker swarm some times register eth0 other eth1 [\#652](https://github.com/fabiolb/fabio/issues/652)
+- config: let registry.consul.register.addr default to ui.addr [\#658](https://github.com/fabiolb/fabio/pull/658) ([pschultz](https://github.com/pschultz))
+- fix exit status code [\#637](https://github.com/fabiolb/fabio/pull/637) ([ianic](https://github.com/ianic))
+
+**Closed issues:**
+
+- Example of Vault KV clientca option? [\#703](https://github.com/fabiolb/fabio/issues/703)
+- tcp proxy not work [\#702](https://github.com/fabiolb/fabio/issues/702)
+- urlprefix-:3306 proto=tcp   not work [\#701](https://github.com/fabiolb/fabio/issues/701)
+- https proxy not work [\#700](https://github.com/fabiolb/fabio/issues/700)
+- the http port is 9999 ,the https port is what? [\#699](https://github.com/fabiolb/fabio/issues/699)
+- TCP proxy log filled with i/o timeout [\#696](https://github.com/fabiolb/fabio/issues/696)
+- urlprefix-zzz.xxx.com/api  not work [\#693](https://github.com/fabiolb/fabio/issues/693)
+- Fabio/Consul route integration [\#689](https://github.com/fabiolb/fabio/issues/689)
+- Unable to route. [\#680](https://github.com/fabiolb/fabio/issues/680)
+- Fabio 100% CPU usage due to logging [\#673](https://github.com/fabiolb/fabio/issues/673)
+- Authorization header leaking to the backend. [\#671](https://github.com/fabiolb/fabio/issues/671)
+- X-Request-Start header [\#670](https://github.com/fabiolb/fabio/issues/670)
+- fabio service entries may stay in Consul on dirty exit [\#663](https://github.com/fabiolb/fabio/issues/663)
+- Can fabio route request by request body [\#661](https://github.com/fabiolb/fabio/issues/661)
+- Wrong reported HealthCheck-URI using custom -proxy.addr & -ui.addr [\#657](https://github.com/fabiolb/fabio/issues/657)
+- Clarify documentation HTTP Redirects [\#656](https://github.com/fabiolb/fabio/issues/656)
+- tcp access control doesn't work [\#651](https://github.com/fabiolb/fabio/issues/651)
+- Crash on start of watchBackend\(\) [\#650](https://github.com/fabiolb/fabio/issues/650)
+- Remove third-party cookie and script requirements from frontend [\#642](https://github.com/fabiolb/fabio/issues/642)
+- Build should use included vendor directory with modules [\#638](https://github.com/fabiolb/fabio/issues/638)
+- Route table UI is broken [\#628](https://github.com/fabiolb/fabio/issues/628)
+- Possible Memory Leak in WatchBackend [\#595](https://github.com/fabiolb/fabio/issues/595)
+- Release date for 1.5.11 [\#592](https://github.com/fabiolb/fabio/issues/592)
+- Fabio and Vault Token Issues [\#523](https://github.com/fabiolb/fabio/issues/523)
+- UI broken where no internet access. [\#502](https://github.com/fabiolb/fabio/issues/502)
+- make log compatible with the syslog protocol [\#397](https://github.com/fabiolb/fabio/issues/397)
+
+**Merged pull requests:**
+
+- Add Vault example to the traffic shaping section. [\#677](https://github.com/fabiolb/fabio/pull/677) ([jrasell](https://github.com/jrasell))
+- Fix matching priority for host:port tuples [\#675](https://github.com/fabiolb/fabio/pull/675) ([pschultz](https://github.com/pschultz))
+- Add config option to use 128 bit trace IDs [\#669](https://github.com/fabiolb/fabio/pull/669) ([gfloyd](https://github.com/gfloyd))
+- register: clean-up fabio service entries in Consul on dirty exit [\#664](https://github.com/fabiolb/fabio/pull/664) ([pires](https://github.com/pires))
+- Fix SSE by implementing Flusher in responseWriter wrapper [\#655](https://github.com/fabiolb/fabio/pull/655) ([gfloyd](https://github.com/gfloyd))
+- Use go-sockaddr to parse address strings [\#653](https://github.com/fabiolb/fabio/pull/653) ([aaronhurt](https://github.com/aaronhurt))
+- ensure absolute path after strip to maintain rfc complaince [\#645](https://github.com/fabiolb/fabio/pull/645) ([aaronhurt](https://github.com/aaronhurt))
+- Bundle UI assets [\#643](https://github.com/fabiolb/fabio/pull/643) ([pschultz](https://github.com/pschultz))
+- ui: Remove duplicate destination column [\#641](https://github.com/fabiolb/fabio/pull/641) ([pschultz](https://github.com/pschultz))
+- use vendor directory when building - fixes \#638 [\#639](https://github.com/fabiolb/fabio/pull/639) ([aaronhurt](https://github.com/aaronhurt))
+- Issue 595 watchbackend [\#629](https://github.com/fabiolb/fabio/pull/629) ([murphymj25](https://github.com/murphymj25))
+- added support for profile/tracing [\#624](https://github.com/fabiolb/fabio/pull/624) ([galen0624](https://github.com/galen0624))
+
+## [v1.5.11](https://github.com/fabiolb/fabio/tree/v1.5.11) (2019-04-09)
+
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.5.11-wrong...v1.5.11)
+
+**Implemented enhancements:**
+
+- Proxy protocol support fo outgoing connections [\#191](https://github.com/fabiolb/fabio/issues/191)
+
+**Closed issues:**
+
+- Consul blocking queries should be rate limited to avoid spiking loads on server [\#627](https://github.com/fabiolb/fabio/issues/627)
+- This seems to be a recursive func call.  Is this correct? [\#625](https://github.com/fabiolb/fabio/issues/625)
+- Bug in consul 1.4.3 [\#616](https://github.com/fabiolb/fabio/issues/616)
+- \[question\] Release date for 1.5.11 [\#601](https://github.com/fabiolb/fabio/issues/601)
+- Sidebar of the website is a little off [\#599](https://github.com/fabiolb/fabio/issues/599)
+- wrong use  function strings.HasPrefix\(\) in file passsing.go [\#545](https://github.com/fabiolb/fabio/issues/545)
+- best way to bypass fabio consul integration? [\#437](https://github.com/fabiolb/fabio/issues/437)
+
+**Merged pull requests:**
+
+- Issue 611 Added Custom API Driven Back end [\#614](https://github.com/fabiolb/fabio/pull/614) ([galen0624](https://github.com/galen0624))
+- Improved basic auth htpasswd file refresh \#604 [\#610](https://github.com/fabiolb/fabio/pull/610) ([mfuterko](https://github.com/mfuterko))
+- Address \#545 - wrong use function strings.HasPrefix [\#607](https://github.com/fabiolb/fabio/pull/607) ([mfuterko](https://github.com/mfuterko))
+- docs: fix layout without JS enabled [\#606](https://github.com/fabiolb/fabio/pull/606) ([pschultz](https://github.com/pschultz))
+- Implement basic auth htpasswd file refresh [\#604](https://github.com/fabiolb/fabio/pull/604) ([mfuterko](https://github.com/mfuterko))
+- added support for Consul TLS transport [\#602](https://github.com/fabiolb/fabio/pull/602) ([sev3ryn](https://github.com/sev3ryn))
+- Proxy protocol on outbound tcp, tcp+sni and tcp with tls connection [\#598](https://github.com/fabiolb/fabio/pull/598) ([mfuterko](https://github.com/mfuterko))
+
+## [v1.5.11-wrong](https://github.com/fabiolb/fabio/tree/v1.5.11-wrong) (2019-02-25)
+
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.5.10...v1.5.11-wrong)
+
+**Implemented enhancements:**
+
+- Basic authentication on routes [\#166](https://github.com/fabiolb/fabio/issues/166)
+
+**Fixed bugs:**
+
+- TCP proxy broken since v1.5.8 [\#524](https://github.com/fabiolb/fabio/issues/524)
+
+**Closed issues:**
+
+- Fabio's routing table empty. Consul indicates registered services with urlprefix- tags [\#589](https://github.com/fabiolb/fabio/issues/589)
+- HTTP 502 response half of the time [\#584](https://github.com/fabiolb/fabio/issues/584)
+- tcp+sni route with allow=ip:something does not seem to work [\#576](https://github.com/fabiolb/fabio/issues/576)
+- Passing args to fabio in nomad task. [\#567](https://github.com/fabiolb/fabio/issues/567)
+- Change Log entry update  [\#562](https://github.com/fabiolb/fabio/issues/562)
+- Release date for 1.5.10? [\#560](https://github.com/fabiolb/fabio/issues/560)
+- Route updates are delayed with large number of services  [\#558](https://github.com/fabiolb/fabio/issues/558)
+- could the source and destination be clickable in the ui? [\#508](https://github.com/fabiolb/fabio/issues/508)
+- Support for opentracing [\#429](https://github.com/fabiolb/fabio/issues/429)
+- Case-insensitive path matching [\#35](https://github.com/fabiolb/fabio/issues/35)
+
+**Merged pull requests:**
+
+- ui: Fix XSS vulnerability [\#588](https://github.com/fabiolb/fabio/pull/588) ([pschultz](https://github.com/pschultz))
+- make Dest column into clickable links [\#587](https://github.com/fabiolb/fabio/pull/587) ([kneufeld](https://github.com/kneufeld))
+- update documentation around the changes to PROXY protocol [\#583](https://github.com/fabiolb/fabio/pull/583) ([aaronhurt](https://github.com/aaronhurt))
+- address concerns raised while troubleshooting \#524 [\#581](https://github.com/fabiolb/fabio/pull/581) ([aaronhurt](https://github.com/aaronhurt))
+- fix ip access rules within tcp proxy - fixes \#576 [\#577](https://github.com/fabiolb/fabio/pull/577) ([aaronhurt](https://github.com/aaronhurt))
+- Add GRPC proxy support [\#575](https://github.com/fabiolb/fabio/pull/575) ([andyroyle](https://github.com/andyroyle))
+- metrics.circonus: Add support for circonus.submissionurl [\#574](https://github.com/fabiolb/fabio/pull/574) ([stack72](https://github.com/stack72))
+- add http-basic auth reading from a file [\#573](https://github.com/fabiolb/fabio/pull/573) ([andyroyle](https://github.com/andyroyle))
+- update consul to v1.4.0 - fixes \#569 [\#571](https://github.com/fabiolb/fabio/pull/571) ([aaronhurt](https://github.com/aaronhurt))
+- add faq to address \#490 [\#568](https://github.com/fabiolb/fabio/pull/568) ([aaronhurt](https://github.com/aaronhurt))
+- Update go.mod for \#472 [\#565](https://github.com/fabiolb/fabio/pull/565) ([magiconair](https://github.com/magiconair))
+- Refactor consul service monitor [\#564](https://github.com/fabiolb/fabio/pull/564) ([magiconair](https://github.com/magiconair))
+- issue 562 update change log glob.matching.disabled [\#563](https://github.com/fabiolb/fabio/pull/563) ([galen0624](https://github.com/galen0624))
+- Added new case insensitive matcher [\#553](https://github.com/fabiolb/fabio/pull/553) ([herbrandson](https://github.com/herbrandson))
+- \[Docs\] Delete duplicate 'Path Stripping' page [\#537](https://github.com/fabiolb/fabio/pull/537) ([rkettelerij](https://github.com/rkettelerij))
+- \#429 issue - OpenTrace zipKin Support  [\#472](https://github.com/fabiolb/fabio/pull/472) ([galen0624](https://github.com/galen0624))
+
+## [v1.5.10](https://github.com/fabiolb/fabio/tree/v1.5.10) (2018-10-25)
+
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.5.9...v1.5.10)
+
+**Fixed bugs:**
+
+- Wrong route for multiple matching host glob patterns [\#506](https://github.com/fabiolb/fabio/issues/506)
+
+**Closed issues:**
+
+- Fabio forcing response header keys upper case [\#552](https://github.com/fabiolb/fabio/issues/552)
+- Multiple fabio instances load balancing different set of services. [\#551](https://github.com/fabiolb/fabio/issues/551)
+- Without Consul how can i use Fabio? [\#549](https://github.com/fabiolb/fabio/issues/549)
+- Performance issue - Glob matching with large number of services in consul [\#548](https://github.com/fabiolb/fabio/issues/548)
+- Ignore host case when adding and matching routes [\#542](https://github.com/fabiolb/fabio/issues/542)
+- allow redirect host to be empty [\#533](https://github.com/fabiolb/fabio/issues/533)
+- Expose Fabio metrics via Prometheus [\#532](https://github.com/fabiolb/fabio/issues/532)
+- Memory leak in go-metrics library [\#530](https://github.com/fabiolb/fabio/issues/530)
+- ability to remove headers from the request [\#528](https://github.com/fabiolb/fabio/issues/528)
+- urlprefix- does not work properly [\#527](https://github.com/fabiolb/fabio/issues/527)
+- Problem geting fabio routing to its own ui [\#525](https://github.com/fabiolb/fabio/issues/525)
+- Redirection to default back-end if route not exists [\#521](https://github.com/fabiolb/fabio/issues/521)
+- Forwarding Uri tag in original request to endpoint [\#519](https://github.com/fabiolb/fabio/issues/519)
+- Fabio - Manual overrides [\#515](https://github.com/fabiolb/fabio/issues/515)
+- If consul is behind an ELB with a set timeout, and the connection is timed out by the ELB, subsequent requests from fabio fail [\#513](https://github.com/fabiolb/fabio/issues/513)
+- Fabio instantly delete route, whereas health check is passing [\#512](https://github.com/fabiolb/fabio/issues/512)
+- Would it be possible to configure Fabio to watch services with warning state? [\#509](https://github.com/fabiolb/fabio/issues/509)
+- Headers passed through fabio are modified [\#505](https://github.com/fabiolb/fabio/issues/505)
+- Fabio -\> HTTPS -\> Service ? [\#503](https://github.com/fabiolb/fabio/issues/503)
+- Tls + sni support for non http traffic?  [\#499](https://github.com/fabiolb/fabio/issues/499)
+- Static routes in fabio.properties [\#498](https://github.com/fabiolb/fabio/issues/498)
+- Tests fail with consul \> 1.0.6 and vault \> 0.9.6 [\#494](https://github.com/fabiolb/fabio/issues/494)
+- Question: wildcard hostname support [\#491](https://github.com/fabiolb/fabio/issues/491)
+- Fabio confi help with multiple proto [\#490](https://github.com/fabiolb/fabio/issues/490)
+- Add support for Vault 0.10 KV v2 [\#483](https://github.com/fabiolb/fabio/issues/483)
+- Support "standard" Consul envvars [\#277](https://github.com/fabiolb/fabio/issues/277)
+- Support Consul TLS [\#276](https://github.com/fabiolb/fabio/issues/276)
+
+**Merged pull requests:**
+
+- Issue \#548 added enable/disable glob matching [\#550](https://github.com/fabiolb/fabio/pull/550) ([galen0624](https://github.com/galen0624))
+- Correct the access control feature documentation page [\#546](https://github.com/fabiolb/fabio/pull/546) ([msvbhat](https://github.com/msvbhat))
+- Add $host pseudo variable [\#544](https://github.com/fabiolb/fabio/pull/544) ([holtwilkins](https://github.com/holtwilkins))
+- compare host using lowercase [\#543](https://github.com/fabiolb/fabio/pull/543) ([shantanugadgil](https://github.com/shantanugadgil))
+- Issue \#530 - Vendored in updated go-metrics package [\#535](https://github.com/fabiolb/fabio/pull/535) ([galen0624](https://github.com/galen0624))
+- Add setting to flush fabio buffer regardless headers [\#531](https://github.com/fabiolb/fabio/pull/531) ([samm-git](https://github.com/samm-git))
+- Update README.md [\#510](https://github.com/fabiolb/fabio/pull/510) ([kuskmen](https://github.com/kuskmen))
+- Issue \#506: reverse domain names before sorting [\#507](https://github.com/fabiolb/fabio/pull/507) ([magiconair](https://github.com/magiconair))
+- Fix changelog link in docs footer [\#500](https://github.com/fabiolb/fabio/pull/500) ([xmikus01](https://github.com/xmikus01))
+- Make tests compatible with Vault 0.10 [\#497](https://github.com/fabiolb/fabio/pull/497) ([pschultz](https://github.com/pschultz))
+- Delete an unused global variable logOutput [\#495](https://github.com/fabiolb/fabio/pull/495) ([gua-pian](https://github.com/gua-pian))
+- Add fastcgi handler [\#435](https://github.com/fabiolb/fabio/pull/435) ([Gufran](https://github.com/Gufran))
+
+## [v1.5.9](https://github.com/fabiolb/fabio/tree/v1.5.9) (2018-05-16)
+
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.5.8...v1.5.9)
+
+**Closed issues:**
+
+- UI is broken from  versions =\> 1.7 [\#487](https://github.com/fabiolb/fabio/issues/487)
+- Building master fails [\#482](https://github.com/fabiolb/fabio/issues/482)
+- '-registry.consul.register.enabled' does not seem to be respected [\#467](https://github.com/fabiolb/fabio/issues/467)
+- Access logging fails in combination with proxy gzipping [\#460](https://github.com/fabiolb/fabio/issues/460)
+- glob matching improvements [\#452](https://github.com/fabiolb/fabio/issues/452)
+- Add route based on x-forwarded-port header [\#450](https://github.com/fabiolb/fabio/issues/450)
+- Redirect http to https on the same destination [\#448](https://github.com/fabiolb/fabio/issues/448)
+- WebSocket Upgrade not sending Response [\#447](https://github.com/fabiolb/fabio/issues/447)
+- Fabio does not remove service when one of the registered health-checks fail [\#427](https://github.com/fabiolb/fabio/issues/427)
+- Fabio routing to wrong back end [\#421](https://github.com/fabiolb/fabio/issues/421)
+- \[feature\]: proxy route option [\#356](https://github.com/fabiolb/fabio/issues/356)
+
+**Merged pull requests:**
+
+- Resetting read deadline [\#492](https://github.com/fabiolb/fabio/pull/492) ([craigday](https://github.com/craigday))
+- Issue \#466: make redirect code more robust [\#477](https://github.com/fabiolb/fabio/pull/477) ([magiconair](https://github.com/magiconair))
+- fix contributors link [\#475](https://github.com/fabiolb/fabio/pull/475) ([aaronhurt](https://github.com/aaronhurt))
+- ws close on failed handshake \(\#421\) [\#474](https://github.com/fabiolb/fabio/pull/474) ([magiconair](https://github.com/magiconair))
+- Issue \#460: Fix access logging when gzip is enabled [\#470](https://github.com/fabiolb/fabio/pull/470) ([magiconair](https://github.com/magiconair))
+- Fix the regex of the example proxy.gzip.contenttype [\#468](https://github.com/fabiolb/fabio/pull/468) ([tino](https://github.com/tino))
+- Check upstream X-Forwarded-Proto prior to redirect [\#466](https://github.com/fabiolb/fabio/pull/466) ([aaronhurt](https://github.com/aaronhurt))
+- Fix certificate stores doc path [\#458](https://github.com/fabiolb/fabio/pull/458) ([eldondev](https://github.com/eldondev))
+- Add new & improved glob matcher [\#457](https://github.com/fabiolb/fabio/pull/457) ([sharbov](https://github.com/sharbov))
+- handle indeterminate length proxy chains - fixes \#449 [\#453](https://github.com/fabiolb/fabio/pull/453) ([aaronhurt](https://github.com/aaronhurt))
+- Update link for Websockets [\#446](https://github.com/fabiolb/fabio/pull/446) ([a2ar](https://github.com/a2ar))
+- "strict" health-checking \(\#427\) [\#428](https://github.com/fabiolb/fabio/pull/428) ([systemfreund](https://github.com/systemfreund))
+
+## [v1.5.8](https://github.com/fabiolb/fabio/tree/v1.5.8) (2018-02-18)
+
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.5.7...v1.5.8)
+
+**Closed issues:**
+
+- TCP Proxying SSH connections [\#445](https://github.com/fabiolb/fabio/issues/445)
+- route add ... opts "proto=tcp+sni" ?? [\#444](https://github.com/fabiolb/fabio/issues/444)
+- Wildcard registeration issues [\#440](https://github.com/fabiolb/fabio/issues/440)
+- Feature Request: IP Whitelisting [\#439](https://github.com/fabiolb/fabio/issues/439)
+- NoRouteHTMLPath not rendering HTML page [\#438](https://github.com/fabiolb/fabio/issues/438)
+
+**Merged pull requests:**
+
+- ignore fabio.exe [\#443](https://github.com/fabiolb/fabio/pull/443) ([aaronhurt](https://github.com/aaronhurt))
+- Issue \#438: Do not add separators for NoRouteHTML page [\#441](https://github.com/fabiolb/fabio/pull/441) ([magiconair](https://github.com/magiconair))
+- Add option to allow Fabio to register frontend services in Consul on behalf of user services [\#426](https://github.com/fabiolb/fabio/pull/426) ([rileyje](https://github.com/rileyje))
+- TCP+SNI support arbitrary large Client Hello [\#423](https://github.com/fabiolb/fabio/pull/423) ([DanSipola](https://github.com/DanSipola))
+
+## [v1.5.7](https://github.com/fabiolb/fabio/tree/v1.5.7) (2018-02-06)
+
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.5.6...v1.5.7)
+
+**Closed issues:**
+
+- VaultPKI tests fail with go1.10rc1 [\#434](https://github.com/fabiolb/fabio/issues/434)
+- Ensure that proxy.noroutestatus has three digits [\#433](https://github.com/fabiolb/fabio/issues/433)
+- Vault PKI documentation and Fabio version [\#430](https://github.com/fabiolb/fabio/issues/430)
+- configure equivalent  of nginx client\_max\_body\_size [\#422](https://github.com/fabiolb/fabio/issues/422)
+- \[question\] Newbie question: where to place urlpref-host/path? [\#419](https://github.com/fabiolb/fabio/issues/419)
+- Static / Manual routes management via API [\#396](https://github.com/fabiolb/fabio/issues/396)
+- Warn if fabio is run as root [\#369](https://github.com/fabiolb/fabio/issues/369)
+
+**Merged pull requests:**
+
+- Activating Open Collective [\#432](https://github.com/fabiolb/fabio/pull/432) ([monkeywithacupcake](https://github.com/monkeywithacupcake))
+- fix small typo [\#431](https://github.com/fabiolb/fabio/pull/431) ([aaronhurt](https://github.com/aaronhurt))
+- Add support for HSTS response headers and provide method for adding additional response headers [\#425](https://github.com/fabiolb/fabio/pull/425) ([aaronhurt](https://github.com/aaronhurt))
+- Fix maxconn documentation [\#420](https://github.com/fabiolb/fabio/pull/420) ([slobo](https://github.com/slobo))
+- treat registry.consul.kvpath as prefix [\#417](https://github.com/fabiolb/fabio/pull/417) ([magiconair](https://github.com/magiconair))
+- Issue \#369: Do not allow to run fabio as root [\#377](https://github.com/fabiolb/fabio/pull/377) ([magiconair](https://github.com/magiconair))
+
+## [v1.5.6](https://github.com/fabiolb/fabio/tree/v1.5.6) (2018-01-05)
+
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.5.5...v1.5.6)
+
+**Closed issues:**
+
+- Excessive consul logging [\#408](https://github.com/fabiolb/fabio/issues/408)
+- Build new website [\#405](https://github.com/fabiolb/fabio/issues/405)
+- \[bug?\] Fabio uses "global" Consul ServiceID's [\#383](https://github.com/fabiolb/fabio/issues/383)
+
+**Merged pull requests:**
+
+- Issue \#408: log consul state changes as DEBUG [\#418](https://github.com/fabiolb/fabio/pull/418) ([magiconair](https://github.com/magiconair))
+- Actually respect -version option [\#415](https://github.com/fabiolb/fabio/pull/415) ([pschultz](https://github.com/pschultz))
+- Identify services using both the ID and the Node [\#414](https://github.com/fabiolb/fabio/pull/414) ([alvaroaleman](https://github.com/alvaroaleman))
+
+## [v1.5.5](https://github.com/fabiolb/fabio/tree/v1.5.5) (2017-12-20)
+
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.5.4...v1.5.5)
+
+**Implemented enhancements:**
+
+- Support custom 404/503 error pages [\#56](https://github.com/fabiolb/fabio/issues/56)
+
+**Closed issues:**
+
+- Fabio for task/container/service load balancing on amazon ecs with consul and registrator.  [\#402](https://github.com/fabiolb/fabio/issues/402)
+
+**Merged pull requests:**
+
+- Implement custom noroute html response [\#398](https://github.com/fabiolb/fabio/pull/398) ([tino](https://github.com/tino))
+
+## [v1.5.4](https://github.com/fabiolb/fabio/tree/v1.5.4) (2017-12-10)
+
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.5.3...v1.5.4)
+
+**Implemented enhancements:**
+
+- Differentiate "URL Unavailable/503" and "URL Not Found/404" [\#214](https://github.com/fabiolb/fabio/issues/214)
+
+**Fixed bugs:**
+
+- opts with host= with multiple routes does not work as expected [\#385](https://github.com/fabiolb/fabio/issues/385)
+
+**Closed issues:**
+
+- Fabio is not handling SIGHUP \(HUP\) signal properly - it dies [\#400](https://github.com/fabiolb/fabio/issues/400)
+- Typo in manual overrides stops Fabio from updating routes [\#399](https://github.com/fabiolb/fabio/issues/399)
+- route precendence  [\#389](https://github.com/fabiolb/fabio/issues/389)
+- how to connect consul cluster [\#386](https://github.com/fabiolb/fabio/issues/386)
+- Allow comments in manual overrides [\#379](https://github.com/fabiolb/fabio/issues/379)
+- Domain or protocol redirection [\#87](https://github.com/fabiolb/fabio/issues/87)
+- Should rewrite the Host Header  [\#75](https://github.com/fabiolb/fabio/issues/75)
+
+**Merged pull requests:**
+
+- Issue \#400: ignore SIGHUP [\#403](https://github.com/fabiolb/fabio/pull/403) ([magiconair](https://github.com/magiconair))
+- Issue \#389: match exact host before glob matches [\#390](https://github.com/fabiolb/fabio/pull/390) ([magiconair](https://github.com/magiconair))
+- Issue \#385: attach options to target instead of route [\#388](https://github.com/fabiolb/fabio/pull/388) ([magiconair](https://github.com/magiconair))
+- Fix various minor things [\#382](https://github.com/fabiolb/fabio/pull/382) ([antham](https://github.com/antham))
+- Remove unused variable [\#381](https://github.com/fabiolb/fabio/pull/381) ([antham](https://github.com/antham))
+- Now setting the X-Forwarded-Host header if not present. Add matching … [\#380](https://github.com/fabiolb/fabio/pull/380) ([LeReverandNox](https://github.com/LeReverandNox))
+
+## [v1.5.3](https://github.com/fabiolb/fabio/tree/v1.5.3) (2017-11-03)
+
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.5.2...v1.5.3)
+
+**Implemented enhancements:**
+
+- Drop privileges after start [\#195](https://github.com/fabiolb/fabio/issues/195)
+- support for adding CORS headers? [\#110](https://github.com/fabiolb/fabio/issues/110)
+
+**Closed issues:**
+
+- host=www.mydomain.com not working [\#375](https://github.com/fabiolb/fabio/issues/375)
+- Wildcards in routing path [\#374](https://github.com/fabiolb/fabio/issues/374)
+- Questions/issues in using overrides [\#372](https://github.com/fabiolb/fabio/issues/372)
+- nodes and services in maintenance can cause excessive logging [\#367](https://github.com/fabiolb/fabio/issues/367)
+- Support fabio.properties in Consul KV store [\#365](https://github.com/fabiolb/fabio/issues/365)
+- Fabio fails to strip the prefix if the url prefix does not start with the strip option value [\#363](https://github.com/fabiolb/fabio/issues/363)
+- More than one fabio instance decreases system performance. [\#361](https://github.com/fabiolb/fabio/issues/361)
+- Documentation of the available metrics? [\#360](https://github.com/fabiolb/fabio/issues/360)
+- select color scheme from config to distinguish environments [\#359](https://github.com/fabiolb/fabio/issues/359)
+- \[Feature request\]: TCP Proxy support different incoming and outbound ports [\#353](https://github.com/fabiolb/fabio/issues/353)
+- hgfiii [\#351](https://github.com/fabiolb/fabio/issues/351)
+- statsd - unable to parse line - gf metric [\#350](https://github.com/fabiolb/fabio/issues/350)
+- Possibility for Docker Image to pass Consul IP and Port as Variable? [\#346](https://github.com/fabiolb/fabio/issues/346)
+- Ways to have log verbosity [\#345](https://github.com/fabiolb/fabio/issues/345)
+- Cant disable consul register with -registry.consul.register.enabled=false [\#342](https://github.com/fabiolb/fabio/issues/342)
+- Glob Matcher is not working for me [\#341](https://github.com/fabiolb/fabio/issues/341)
+- Strip option has no effect for websockets [\#330](https://github.com/fabiolb/fabio/issues/330)
+- access logging is not right [\#322](https://github.com/fabiolb/fabio/issues/322)
+- FATAL error when metrics cannot be delivered [\#320](https://github.com/fabiolb/fabio/issues/320)
+- http: proxy error: context canceled [\#318](https://github.com/fabiolb/fabio/issues/318)
+- /api/routes intermittently returns null. [\#316](https://github.com/fabiolb/fabio/issues/316)
+- what is the tcp writeTimeout? [\#307](https://github.com/fabiolb/fabio/issues/307)
+
+**Merged pull requests:**
+
+- Issue \#375: set host header when host option is set [\#376](https://github.com/fabiolb/fabio/pull/376) ([magiconair](https://github.com/magiconair))
+
+## [v1.5.2](https://github.com/fabiolb/fabio/tree/v1.5.2) (2017-07-24)
+
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.5.1...v1.5.2)
+
+**Implemented enhancements:**
+
+- Auto-generated Vault certs [\#135](https://github.com/fabiolb/fabio/issues/135)
+
+**Closed issues:**
+
+- not able to acces the service via fabio. [\#319](https://github.com/fabiolb/fabio/issues/319)
+
+**Merged pull requests:**
+
+- Fix memory leak in tcp proxy [\#321](https://github.com/fabiolb/fabio/pull/321) ([Crypto89](https://github.com/Crypto89))
+
+## [v1.5.1](https://github.com/fabiolb/fabio/tree/v1.5.1) (2017-07-06)
+
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.5.0...v1.5.1)
+
+**Implemented enhancements:**
+
+- Feature: Allow weight tag in Consul [\#42](https://github.com/fabiolb/fabio/issues/42)
 
-    Minimum go version is bumped to 1.16 since we use embed functionality.
+**Fixed bugs:**
 
-### [v1.6.0](https://github.com/fabiolb/fabio/releases/tag/v1.6.0) - 11 April 2022
+- 1.5.0 config compatibility problem  [\#305](https://github.com/fabiolb/fabio/issues/305)
 
-#### Improvements
+**Closed issues:**
 
-* [PR #476](https://github.com/fabiolb/fabio/pull/476) - Metrics refactor (@magiconair @nathanejohnson)
+- Multiple urlprefix [\#317](https://github.com/fabiolb/fabio/issues/317)
+- Add metrics for TCP and TCP+SNI proxy [\#306](https://github.com/fabiolb/fabio/issues/306)
+- How to configure TCP correctly \(proxy.addr, ...\) [\#283](https://github.com/fabiolb/fabio/issues/283)
+- Add parameter to vault token renewal [\#274](https://github.com/fabiolb/fabio/issues/274)
 
-    This is a large change.  All previously supported metrics backends
-    are still supported, however this is a complete rewrite of the functionality
-    moving over to the gokit framework for implementations.  In addition
-    to all previously supported metrics backends (circonus, graphite, statsd),
-    prometheus support has been added, as well as dogstatsd, have been added,
-    with full tagging support.  Unfortunately some backwards compatibility
-    with graphana histograms does not work, due to the way gokit handles
-    these.  Statsd support has changed as well, but it was horribly broken
-    in that counters never reset like they were supposed to.  Overall, the
-    improvements should outweigh the negatives of backwards compatibility for
-    most people.
+**Merged pull requests:**
 
-* [PR #868](https://github.com/fabiolb/fabio/pull/868) - Updating go and alpine versions for Docker (@Netlims)
-* [PR #869](https://github.com/fabiolb/fabio/pull/869) - Updating golang.orgx/sys dependency version (@nathanejohnson)
-* [PR #866](https://github.com/fabiolb/fabio/pull/866) - Support for arm64 mac build (@nathanejohnson)
-* [PR #863](https://github.com/fabiolb/fabio/pull/863) - Add IdleConnTimeout configuration option for http transport 
-  (@aal89)
-* [PR #857](https://github.com/fabiolb/fabio/pull/857) - admin/ui updates (@dcarbone), updating UI dependencies and 
-  generation from Makefile
+- Issue \#274: Avoid premature vault token renewals [\#314](https://github.com/fabiolb/fabio/pull/314) ([pschultz](https://github.com/pschultz))
+- Make tests work with vault 0.7.x [\#313](https://github.com/fabiolb/fabio/pull/313) ([pschultz](https://github.com/pschultz))
+- Fix syntax highlighting in README [\#311](https://github.com/fabiolb/fabio/pull/311) ([agis](https://github.com/agis))
 
-#### Breaking Changes
+## [v1.5.0](https://github.com/fabiolb/fabio/tree/v1.5.0) (2017-06-07)
 
-    As mentioned above, Graphite histograms have changed.
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.4.4...v1.5.0)
 
-#### Bug Fixes
+**Implemented enhancements:**
 
-* [PR #867](https://github.com/fabiolb/fabio/pull/867) - Improve performance of building routing table (@ddreier)
-* [PR #864](https://github.com/fabiolb/fabio/pull/864) - Fix example commands in registry.consul.kvpath (@blake)
+- X-Forwarded-Prefix header support [\#304](https://github.com/fabiolb/fabio/issues/304)
+- read only web ui [\#302](https://github.com/fabiolb/fabio/issues/302)
+- Sync X-Forwarded-Proto and Forwarded header when possible [\#296](https://github.com/fabiolb/fabio/issues/296)
+- Using upstream hostname for request [\#294](https://github.com/fabiolb/fabio/issues/294)
+- Add profiling support [\#290](https://github.com/fabiolb/fabio/issues/290)
+- TLS and Connection information through headers [\#280](https://github.com/fabiolb/fabio/issues/280)
+- Support TLS/Ciphersuite configuration options [\#249](https://github.com/fabiolb/fabio/issues/249)
 
-### [v1.5.15](https://github.com/fabiolb/fabio/releases/tag/v1.5.15) - 1 Dec 2020
+**Fixed bugs:**
 
-#### Bug Fixes
+- Support gzip compression for websockets [\#300](https://github.com/fabiolb/fabio/issues/300)
 
-* [PR #790](https://github.com/fabiolb/fabio/pull/790) - Fix typo in CHANGELOG.md (@stevenscg)
-* [PR #798](https://github.com/fabiolb/fabio/pull/798) - Stop dynamic TCP listener when upstream is no longer available (@fwkz)
+**Closed issues:**
 
-#### Improvements
-* [PR #794](https://github.com/fabiolb/fabio/pull/794) - update vendor dependencies
-* [PR #803](https://github.com/fabiolb/fabio/pull/803) - change GOGC default to 100
+- Example of proxy.gzip.contenttype configuration [\#299](https://github.com/fabiolb/fabio/issues/299)
+- Compatibility with 1.8 [\#297](https://github.com/fabiolb/fabio/issues/297)
+- cert file names and path= not working as documented [\#293](https://github.com/fabiolb/fabio/issues/293)
+- Multiple SSL certs for same listener [\#291](https://github.com/fabiolb/fabio/issues/291)
+- HTTPProxy cannot be aware of timeout of waiting response [\#288](https://github.com/fabiolb/fabio/issues/288)
+- websockets failing with 500 response - running rancher behind fabio [\#133](https://github.com/fabiolb/fabio/issues/133)
 
-### [v1.5.14](https://github.com/fabiolb/fabio/releases/tag/v1.5.14) - 9 Sep 2020
+**Merged pull requests:**
 
+- Using upstream hostname for request \(\#294\) [\#301](https://github.com/fabiolb/fabio/pull/301) ([mitchelldavis](https://github.com/mitchelldavis))
 
-#### Bug Fixes
+## [v1.4.4](https://github.com/fabiolb/fabio/tree/v1.4.4) (2017-05-08)
 
-* [PR #644](https://github.com/fabiolb/fabio/pull/644) - Better error handling (@danlsgiga)
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.4.3...v1.4.4)
 
-* [PR #739](https://github.com/fabiolb/fabio/pull/739) - Fix infinite buffering of SSE responses when gzip is enabled (@ctlajoie)
+**Implemented enhancements:**
 
-* [PR #733](https://github.com/fabiolb/fabio/pull/733) - Add missing <svc> entry to example route (@BenjaminHerbert)
+- Add service name to access log fields [\#278](https://github.com/fabiolb/fabio/issues/278)
 
-* [PR #674](https://github.com/fabiolb/fabio/pull/674) - Deprecate deregisterCriticalServiceAfter option (@pschultz)
+**Fixed bugs:**
 
-* [PR #648](https://github.com/fabiolb/fabio/pull/648) - Issue #647 NormalizeHost (@murphymj25)
+- Fabio does not advertise http/1.1 on TLS connections [\#289](https://github.com/fabiolb/fabio/issues/289)
+- fabio does not start with multiple listen sockets [\#279](https://github.com/fabiolb/fabio/issues/279)
+- Websocket not working with HTTPS Upstream [\#271](https://github.com/fabiolb/fabio/issues/271)
 
-* [Issue #737](https://github.com/fabiolb/fabio/issues/737) - Preserve table state by storing buffer table in fixed strings (@leprechau)
+**Closed issues:**
 
-* [PR #774](https://github.com/fabiolb/fabio/pull/774) - Documentation fixes (@Oxflotus)
+- Reload configuration without restarting fabio by SIGHUP or by flag. [\#286](https://github.com/fabiolb/fabio/issues/286)
+- chunked Transfer-Encoding [\#284](https://github.com/fabiolb/fabio/issues/284)
+- How to know what opts are supported in a route / consul tag? [\#270](https://github.com/fabiolb/fabio/issues/270)
+- Question: Support for Consul v0.7.3 Node tags [\#252](https://github.com/fabiolb/fabio/issues/252)
 
-* [PR #775](https://github.com/fabiolb/fabio/pull/775) - fix typo in comments (@josgraha)
+## [v1.4.3](https://github.com/fabiolb/fabio/tree/v1.4.3) (2017-04-24)
 
-* [PR #787](https://github.com/fabiolb/fabio/pull/787) - fix matchingHostNoGlob sometimes returns incorrect host (@nathanejohnson @leprechau)
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.4.2...v1.4.3)
 
-#### Improvements
+**Fixed bugs:**
 
-* [PR #626](https://github.com/fabiolb/fabio/pull/626): Add TCP Dynamic support (@murphymj25)
+- Access log cannot be disabled [\#269](https://github.com/fabiolb/fabio/issues/269)
 
-* [PR #635](https://github.com/fabiolb/fabio/pull/635): Add idleTimeout to config and to serve.go HTTP server (@galen0624)
+**Closed issues:**
 
-* [PR #572](https://github.com/fabiolb/fabio/pull/572): Issue #558 - Add Polling Interval from Fabio to Consul to Fabio Config (@galen0624)
+- Can fabio proxy by hostname? [\#267](https://github.com/fabiolb/fabio/issues/267)
+- Issues with Haproxy on passthrough mode [\#266](https://github.com/fabiolb/fabio/issues/266)
+- How to configure HTTPS upstream manually with tlsskipverify [\#260](https://github.com/fabiolb/fabio/issues/260)
+- HTTPS upstream added as HTTP [\#259](https://github.com/fabiolb/fabio/issues/259)
 
-* [PR #615](https://github.com/fabiolb/fabio/pull/615): Issue #554 - Added compiled glob matching using LRU Cache (@galen0624 @magiconair @leprechau)
+**Merged pull requests:**
 
-* [PR #715](https://github.com/fabiolb/fabio/pull/715): Add HTTP method and path to trace span operation name (@hobochili)
+- Add support for TLSSkipVerify for https consul fabio check [\#268](https://github.com/fabiolb/fabio/pull/268) ([Ginja](https://github.com/Ginja))
 
-* [PR #489](https://github.com/fabiolb/fabio/pull/489): Pass encoded characters in path unchanged (@valentin-krasontovitsch)
+## [v1.4.2](https://github.com/fabiolb/fabio/tree/v1.4.2) (2017-04-10)
 
-* [PR #784](https://github.com/fabiolb/fabio/pull/784): Add https+tcp+sni listener support (@nathanejohnson)
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.4.1...v1.4.2)
 
-### [v1.5.13](https://github.com/fabiolb/fabio/releases/tag/v1.5.13) - 18 Nov 2019
+**Implemented enhancements:**
 
-#### Bug Fixes
+- Add HTTPS upstream support [\#181](https://github.com/fabiolb/fabio/issues/181)
 
-* [PR #710](https://github.com/fabiolb/fabio/pull/710): Safely handle missing cert from Vault KV store
+**Closed issues:**
 
-* [Issue #719](https://github.com/fabiolb/fabio/issues/719): Fix detailed config log
+- Find the route across the machine, but no response [\#256](https://github.com/fabiolb/fabio/issues/256)
 
-### [v1.5.12](https://github.com/fabiolb/fabio/releases/tag/v1.5.12) - 11 Oct 2019
+**Merged pull requests:**
 
-#### Breaking Changes
+- Allow UI/API to be served over https [\#258](https://github.com/fabiolb/fabio/pull/258) ([tmessi](https://github.com/tmessi))
+- Add https upstream support [\#257](https://github.com/fabiolb/fabio/pull/257) ([tmessi](https://github.com/tmessi))
 
- * [Issue #657](https://github.com/fabiolb/fabio/issues/657): Fix default registration address
+## [v1.4.1](https://github.com/fabiolb/fabio/tree/v1.4.1) (2017-04-04)
 
-  fabio used to register its UI in Consul with address `:9998`, even if
-  `-ui.addr` was set to a different value. That made it necessary to specify
-  both `-ui.addr` and `-registry.consul.register.addr` in most cases. Now
-  `-registry.consul.register.addr` defaults to the value of `-ui.addr`.
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.4...v1.4.1)
 
-  If you set `-ui.addr` to something other than `:9998` and intentionally
-  omitted the `-registry.consul.register.addr` flag (because the UI is behind a
-  proxy, for instance), you will now have to set `-registry.consul.register.addr=:9998`
-  to get the previous behavior.
+**Implemented enhancements:**
 
-  Thanks to [@ttais2017](https://github.com/ttais2017) for the report.
+- Add generic TCP proxying support [\#179](https://github.com/fabiolb/fabio/issues/179)
+- Add tests and timeouts to TCP+SNI proxy [\#178](https://github.com/fabiolb/fabio/issues/178)
 
-#### Improvements
+**Closed issues:**
 
- * [PR #677](https://github.com/fabiolb/fabio/pull/677): Add Vault example to the traffic shaping section. (@jrasell)
+- Is there any option to enable HSTS [\#254](https://github.com/fabiolb/fabio/issues/254)
 
- * [PR #675](https://github.com/fabiolb/fabio/pull/675): Fix matching priority for host:port tuples (@pschultz)
+## [v1.4](https://github.com/fabiolb/fabio/tree/v1.4) (2017-03-25)
 
- * [PR #664](https://github.com/fabiolb/fabio/issues/664): Clean-up fabio service entries in Consul on dirty exit
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.4rc1...v1.4)
 
-  In the case fabio dies abruptly, the steps to deregister any fabio-related services in Consul will not take place.
-  In certain cases this could result in duplicate service and check entries after fabio restarts, especially if fabio runs in a Docker container.
+## [v1.4rc1](https://github.com/fabiolb/fabio/tree/v1.4rc1) (2017-03-23)
 
-  This PR addresses this issue by registering an additional TTL check that acts as a deadman switch and removes abandoned service registrations eventually.
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.4beta2...v1.4rc1)
 
-  Thanks to [@pires](https://github.com/pires) for the [report](https://github.com/fabiolb/fabio/issues/663) and the fix.
+## [v1.4beta2](https://github.com/fabiolb/fabio/tree/v1.4beta2) (2017-03-23)
 
- * [PR #669](https://github.com/fabiolb/fabio/pull/669): Add option for downgrading tracing IDs to 64 bit
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.4beta1...v1.4beta2)
 
-  When tracing is enabled, fabio injected 128 bit root span IDs if necessary.
-  This can now be downgraded to 64 bit IDs by setting the new
-  `tracing.TraceID128Bit` option to false.
+## [v1.4beta1](https://github.com/fabiolb/fabio/tree/v1.4beta1) (2017-03-23)
 
-  Existing 128 bit trace IDs in incoming requests are not affected by this
-  option and forwarded unchanged.
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.3.8...v1.4beta1)
 
-  Thanks to [@gfloyd](https://github.com/gfloyd) for the patch.
+**Implemented enhancements:**
 
- * [PR #624](https://github.com/fabiolb/fabio/pull/624): added support for profile/tracing (@galen0624)
+- Start listener after routing table is initialized [\#248](https://github.com/fabiolb/fabio/issues/248)
+- Support glob host matching [\#163](https://github.com/fabiolb/fabio/issues/163)
+- Refactor urlprefix tags [\#111](https://github.com/fabiolb/fabio/issues/111)
+- TCP proxying support [\#1](https://github.com/fabiolb/fabio/issues/1)
 
- * [PR #641](https://github.com/fabiolb/fabio/pull/641): ui: Remove duplicate destination column (@pschultz)
+**Closed issues:**
 
- * [PR #658](https://github.com/fabiolb/fabio/pull/658): config: let registry.consul.register.addr default to ui.addr  enhancement (@pschultz)
+- feature idea: fabio can be configured to only serve consul services with certain tags [\#245](https://github.com/fabiolb/fabio/issues/245)
+- How does services get in to router table of fabio [\#237](https://github.com/fabiolb/fabio/issues/237)
 
- * [PR #620](https://github.com/fabiolb/fabio/pull/620): Read Vault token from file
+## [v1.3.8](https://github.com/fabiolb/fabio/tree/v1.3.8) (2017-02-14)
 
-  The new `vaultfetchtoken` option for the vault and vault-pki certificate
-  sources can be used to load Vault tokens from environment variables other
-  than `VAULT_TOKEN` and from files on disk. fabio will automatically notice
-  when file contents change and start using new tokens.
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.3.7...v1.3.8)
 
-  This improves integration with [Nomad](https://www.nomadproject.io/docs/job-specification/vault.html)
-  and the [Vault Agent](https://www.vaultproject.io/docs/agent/).
+**Implemented enhancements:**
 
-  Thanks to [@murphymj25](https://github.com/murphymj25) for the patch.
+- Retry registry during startup [\#240](https://github.com/fabiolb/fabio/issues/240)
+- Make route update logging format configurable [\#238](https://github.com/fabiolb/fabio/issues/238)
+- Support absolute URLs [\#219](https://github.com/fabiolb/fabio/issues/219)
 
- * [PR #643](https://github.com/fabiolb/fabio/pull/643): Bundle UI assets (@pschultz)
+**Fixed bugs:**
 
- * [PR #653](https://github.com/fabiolb/fabio/pull/653): Use go-sockaddr to parse address strings (@leprechau)
+- requests and notfound metric missing [\#218](https://github.com/fabiolb/fabio/issues/218)
+- fabio 1.3.6 UI displays host and path as 'undefined' in the routes page [\#217](https://github.com/fabiolb/fabio/issues/217)
 
- * [PR #655](https://github.com/fabiolb/fabio/pull/655): Fix SSE by implementing Flusher in responseWriter wrapper (@gfloyd)
+**Closed issues:**
 
- * [PR #645](https://github.com/fabiolb/fabio/pull/645): ensure absolute path after strip to maintain rfc complaince (@leprechau)
+- https support [\#241](https://github.com/fabiolb/fabio/issues/241)
+- Fabio - setup details [\#235](https://github.com/fabiolb/fabio/issues/235)
+- Not able to connect to fabio UI ... I wonder if I miss any specifics ?. [\#234](https://github.com/fabiolb/fabio/issues/234)
+- Error in Fabio setup on container where consul-agent \(client\) is installed [\#233](https://github.com/fabiolb/fabio/issues/233)
+- Fabio Connecting error to local consul-agent \(client\) [\#232](https://github.com/fabiolb/fabio/issues/232)
+- Load balancing between multiple service cluster nodes [\#231](https://github.com/fabiolb/fabio/issues/231)
+- Specify Consul service name in Fabio config [\#230](https://github.com/fabiolb/fabio/issues/230)
+- caching [\#228](https://github.com/fabiolb/fabio/issues/228)
+- Links in docs to the Traffic Shaping page are dead [\#222](https://github.com/fabiolb/fabio/issues/222)
+- Overrides API and GUI save KV Store as wrong name [\#220](https://github.com/fabiolb/fabio/issues/220)
 
- * [PR #629](https://github.com/fabiolb/fabio/pull/629): Issue 595 watchbackend (@murphymj25)
+## [v1.3.7](https://github.com/fabiolb/fabio/tree/v1.3.7) (2017-01-19)
 
- * [PR #639](https://github.com/fabiolb/fabio/pull/639): use vendor directory when building - fixes #638 (@leprechau)
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.3.6...v1.3.7)
 
- * [PR #637](https://github.com/fabiolb/fabio/pull/637): fix exit status code  enhancement (@ianic)
+**Implemented enhancements:**
 
- * [PR #602](https://github.com/fabiolb/fabio/pull/602): added support for Consul TLS transport (@sev3ryn)
+- Support deleting routes by tag [\#201](https://github.com/fabiolb/fabio/issues/201)
 
- * [PR #610](https://github.com/fabiolb/fabio/pull/610): Improved basic auth htpasswd file refresh #604 (@mfuterko)
+**Fixed bugs:**
 
- * [PR #614](https://github.com/fabiolb/fabio/pull/614): Issue 611 Added Custom API Driven Back end (@galen0624)
+- Fabio does not serve http2 with go \>= 1.7 [\#215](https://github.com/fabiolb/fabio/issues/215)
+- Bad statsd mean metric format [\#207](https://github.com/fabiolb/fabio/issues/207)
 
- * [PR #617](https://github.com/fabiolb/fabio/pull/617): Fix newBasicAuth function to pass the test (@mfuterko)
+**Closed issues:**
 
- * [PR #607](https://github.com/fabiolb/fabio/pull/607): Address #545 - wrong use function strings.HasPrefix (@mfuterko)
+- Fabio is not able to pick service from consul and not able to update routing table. [\#210](https://github.com/fabiolb/fabio/issues/210)
 
- * [PR #604](https://github.com/fabiolb/fabio/pull/604): Implement basic auth htpasswd file refresh (@mfuterko)
+## [v1.3.6](https://github.com/fabiolb/fabio/tree/v1.3.6) (2017-01-17)
 
- * [PR #606](https://github.com/fabiolb/fabio/pull/606): docs: fix layout without JS enabled (@pschultz)
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.3.5...v1.3.6)
 
- * [PR #598](https://github.com/fabiolb/fabio/pull/598): Proxy protocol on outbound tcp, tcp+sni and tcp with tls connection (@mfuterko)
+**Implemented enhancements:**
 
-### [v1.5.11](https://github.com/fabiolb/fabio/releases/tag/v1.5.11) - 25 Feb 2019
+- Refactor config loader tests [\#199](https://github.com/fabiolb/fabio/issues/199)
+- Routing by path [\#164](https://github.com/fabiolb/fabio/issues/164)
+- Strip prefix in the forwarded request [\#44](https://github.com/fabiolb/fabio/issues/44)
 
-#### Breaking Changes
+**Fixed bugs:**
 
-* [Issue #524](https://github.com/fabiolb/fabio/issues/524): Fix TCP proxy
+- runtime error: integer divide by zero [\#186](https://github.com/fabiolb/fabio/issues/186)
 
-  Adding access control in 1.5.8 broke the TCP proxy for clients which wait
-  for a server handshake before they send data themself, e.g. MySQL client.
-  Calling `RemoteAddr` to check the access list is a blocking call on the
-  underlying listener. The Go team fixed this for HTTP in
-  https://github.com/golang/go/issues/12943 but fabio was still affected.
+**Closed issues:**
 
-  This patch **disables** the PROXY protocol by default and you have to
-  **enable** it if you need it. You can control this with the `pxyproto` and
-  `pxytimeout` options which allow to enable/disable the protocol and add a
-  timeout for auto-detection if it is enabled.
+- fabio proxy for consul not work, log show no route [\#212](https://github.com/fabiolb/fabio/issues/212)
+- Consul registration won't disable [\#209](https://github.com/fabiolb/fabio/issues/209)
+- Fabio hangs for 30+ seconds for 204 response [\#206](https://github.com/fabiolb/fabio/issues/206)
+- Fabio running using Nomad system scheduler breaks Docker.  [\#192](https://github.com/fabiolb/fabio/issues/192)
 
-  Thanks to [@pschultz](https://github.com/pschultz) and
-  [@leprechau](https://github.com/leprechau) for the debugging and patch.
+## [v1.3.5](https://github.com/fabiolb/fabio/tree/v1.3.5) (2016-11-30)
 
-#### Bug Fixes
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.3.4...v1.3.5)
 
-* [PR #577](https://github.com/fabiolb/fabio/pull/577): Fix ip access rules within tcp proxy
+**Implemented enhancements:**
 
-  Access rules were not being evaluated in the `tcp` proxy.
+- fabio --version switch should work just like -v [\#197](https://github.com/fabiolb/fabio/issues/197)
+- Remove proxy.header.tls header from inbound request [\#194](https://github.com/fabiolb/fabio/issues/194)
+- Support transparent response body compression [\#119](https://github.com/fabiolb/fabio/issues/119)
 
-  Thanks to [@KEZHwMlXV1vFzs6QvY8v5WjX5](https://github.com/KEZHwMlXV1vFzs6QvY8v5WjX5) for identifying the issue, providing a solution, and testing.
+**Fixed bugs:**
 
-* [PR #588](https://github.com/fabiolb/fabio/pull/588): Fix XSS vulnerability in UI
+- missing 'cs' in map [\#189](https://github.com/fabiolb/fabio/issues/189)
+- WebSockets not working with IE10 - header casing. [\#183](https://github.com/fabiolb/fabio/issues/183)
+- Vault CA Certificate [\#182](https://github.com/fabiolb/fabio/issues/182)
 
-  Thanks to [@pschultz](https://github.com/pschultz).
+**Closed issues:**
 
-#### Improvements
+- Logs request [\#188](https://github.com/fabiolb/fabio/issues/188)
+- Is this the expecting behavior of Fabio with paths? [\#187](https://github.com/fabiolb/fabio/issues/187)
+- TCP+SNI support on the same port as HTTPS  [\#169](https://github.com/fabiolb/fabio/issues/169)
 
-* [PR #564](https://github.com/fabiolb/fabio/pull/564): refactor consul service monitor
+## [v1.3.4](https://github.com/fabiolb/fabio/tree/v1.3.4) (2016-10-28)
 
-  This patch addresses [Issue #558](https://github.com/fabiolb/fabio/issues/558) where
-  route updates are delayed when there are a large number of services registered in
-  Consul. This patch adds a new option `registry.consul.serviceMonitors` to configure
-  the concurrency for routing table updates.
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.3.3...v1.3.4)
 
-  Thanks to [@galen0624](https://github.com/galen0624) for the issue report and the initial
-  patch.
+## [v1.3.3](https://github.com/fabiolb/fabio/tree/v1.3.3) (2016-10-12)
 
-* [PR #574](https://github.com/fabiolb/fabio/pull/574): add support for circonus.submissionurl
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.3.2...v1.3.3)
 
-  Thanks to [@stack72](https://github.com/stack72) for the patch.
+**Implemented enhancements:**
 
-* [PR #583](https://github.com/fabiolb/fabio/pull/583): Update PROXY protocol docs
+- Provide linux/arm and linux/arm64 binaries [\#161](https://github.com/fabiolb/fabio/issues/161)
+- Metrics Prefix with templates [\#160](https://github.com/fabiolb/fabio/pull/160) ([md2k](https://github.com/md2k))
 
-  This patch updates the documentation around the PROXY protocol.
+**Fixed bugs:**
 
-  Thanks to [@leprechau](https://github.com/leprechau).
+- TCP+SNI proxy does not work with PROXY protocol [\#177](https://github.com/fabiolb/fabio/issues/177)
+- Consul cert store URL with token not parsed correctly [\#172](https://github.com/fabiolb/fabio/issues/172)
+- Panic on invalid response [\#159](https://github.com/fabiolb/fabio/issues/159)
 
-* [PR #587](https://github.com/fabiolb/fabio/pull/587): Make dest column clickable
+**Closed issues:**
 
-  This patch makes the dest column in the fabio UI clickable.
+- can not see new application added to the same fabio instance [\#176](https://github.com/fabiolb/fabio/issues/176)
+- Ridiculous lack for docker documentation [\#175](https://github.com/fabiolb/fabio/issues/175)
+- OT: logo for the eBay organization [\#158](https://github.com/fabiolb/fabio/issues/158)
 
-  Thanks to [@kneufeld](https://github.com/kneufeld).
+**Merged pull requests:**
 
-#### Features
+- Use Go's net.JoinHostPort which will auto-detect ipv6 [\#167](https://github.com/fabiolb/fabio/pull/167) ([jovandeginste](https://github.com/jovandeginste))
 
-* [PR #429](https://github.com/fabiolb/fabio/issues/429): Support for opentracing
+## [v1.3.2](https://github.com/fabiolb/fabio/tree/v1.3.2) (2016-09-11)
 
-   This patch adds support for opentracing.
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.3.1...v1.3.2)
 
-   Thanks to Jeremy White, Kristina Fischer, Micheal Murphz, Nathan West,
-   Austin Hartzheim and Jacob Hansen for this patch!
+**Fixed bugs:**
 
-* [PR #553](https://github.com/fabiolb/fabio/issues/553): Support for case-insensitive matching
+- ParseListen may set the wrong protocol [\#157](https://github.com/fabiolb/fabio/issues/157)
 
-  This patch adds a new `iprefix` option to the `proxy.matcher` to support case-insensitive
-  path prefix matching.
+## [v1.3.1](https://github.com/fabiolb/fabio/tree/v1.3.1) (2016-09-09)
 
-  Thanks to [@herbrandson](https://github.com/herbrandson) for the patch.
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.3...v1.3.1)
 
-* [PR #573](https://github.com/fabiolb/fabio/pull/573): add http-basic auth reading from a file
+## [v1.3](https://github.com/fabiolb/fabio/tree/v1.3) (2016-09-09)
 
-  This patch adds support for HTTP Basic Authentication via an `htpasswd` file.
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.2.1...v1.3)
 
-  Thanks to [@andyroyle](https://github.com/andyroyle) for the patch.
+**Implemented enhancements:**
 
-* [PR #575](https://github.com/fabiolb/fabio/pull/575): Add GRPC proxy support
+- Add support for Circonus metrics [\#151](https://github.com/fabiolb/fabio/issues/151)
+- Support multiple metrics libraries [\#147](https://github.com/fabiolb/fabio/issues/147)
+- Is there a way to prevent SSL requests falling back to an unrelated cert? [\#138](https://github.com/fabiolb/fabio/issues/138)
+- Vault token should not require 'root' or 'sudo' privileges [\#134](https://github.com/fabiolb/fabio/issues/134)
+- Extended metrics [\#125](https://github.com/fabiolb/fabio/issues/125)
 
-  This patch adds proper GRPC proxy support, including TLS upstream and TLS termination.
+**Fixed bugs:**
 
-  Thanks to [@andyroyle](https://github.com/andyroyle) for the patch.
+- fabio fails to start with "\[FATAL\] 1.2. missing 'cs' in cs" [\#146](https://github.com/fabiolb/fabio/issues/146)
 
-### [v1.5.10](https://github.com/fabiolb/fabio/releases/tag/v1.5.10) - 25 Oct 2018
+**Closed issues:**
 
-#### Breaking Changes
+- fabio g-rpc [\#156](https://github.com/fabiolb/fabio/issues/156)
+- Routing based on Accept Header [\#155](https://github.com/fabiolb/fabio/issues/155)
+- not all command-line options seem to do anything [\#152](https://github.com/fabiolb/fabio/issues/152)
 
-#### Bug Fixes
+## [v1.2.1](https://github.com/fabiolb/fabio/tree/v1.2.1) (2016-08-25)
 
- * [Issue #530](https://github.com/fabiolb/fabio/issues/530): Memory leak in go-metrics library
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.2...v1.2.1)
 
-   When metrics collection was enabled within fabio instances with very dynamic route changes memory usage quickly
-   ramped above expected levels.  Research done by [@galen0624](https://github.com/galen0624) identified the issue
-   and lead to the discovery of a fix in an updated version of the go-metrics library used by fabio.
+**Implemented enhancements:**
 
- * [Issue #506](https://github.com/fabiolb/fabio/issues/506): Wrong route for multiple matching host glob patterns
+- Server-sent events support [\#129](https://github.com/fabiolb/fabio/issues/129)
+- access logging [\#80](https://github.com/fabiolb/fabio/issues/80)
+- Support configuration via command line arguments [\#79](https://github.com/fabiolb/fabio/issues/79)
+- Support statsd [\#73](https://github.com/fabiolb/fabio/issues/73)
+- SSL Certs from Vault [\#70](https://github.com/fabiolb/fabio/issues/70)
+- Refactor listener config [\#28](https://github.com/fabiolb/fabio/issues/28)
+- Add/remove certificates using API [\#27](https://github.com/fabiolb/fabio/issues/27)
 
-   When multiple host glob patterns match an incoming request fabio can pick the wrong backend for the request.
-   This is because the sorting code that should sort the matching patterns from most specific to least specific
-   does not take into account that doamin names have their most specific part at the front. This has been fixed
-   by reversing the domain names before sorting.
+**Fixed bugs:**
 
-#### Improvements
+- Always deregister from Consul [\#136](https://github.com/fabiolb/fabio/issues/136)
 
- * The default Docker image is now based on alpine:3.8 and runs the full test suite during build. It also sets
-   `/usr/bin/fabio` as `ENTRYPOINT` with `-cfg /etc/fabio/fabio.properties` as default command line arguments.
-   The previous image was built on `scratch`.
+**Closed issues:**
 
- * [PR #497](https://github.com/fabiolb/fabio/pull/497): Make tests pass with latest Consul and Vault versions
+- HA access to the management interface on instances [\#145](https://github.com/fabiolb/fabio/issues/145)
+- Fabio is not adding route, but health check is passing [\#142](https://github.com/fabiolb/fabio/issues/142)
+- Wrong Destination IP [\#140](https://github.com/fabiolb/fabio/issues/140)
+- Having trouble recognizing routes from consul [\#137](https://github.com/fabiolb/fabio/issues/137)
 
-   Thanks to [@pschultz](https://github.com/pschultz) for the patch.
+**Merged pull requests:**
 
- * [PR #531](https://github.com/fabiolb/fabio/pull/531): Set flush buffer interval for non-SSE requests
+- Improve error message on missing trailing slash [\#143](https://github.com/fabiolb/fabio/pull/143) ([juliangamble](https://github.com/juliangamble))
+- added statsd support [\#139](https://github.com/fabiolb/fabio/pull/139) ([jshaw86](https://github.com/jshaw86))
 
-   This PR adds a `proxy.globalflushinterval` option to configure an interval when the HTTP Response
-   Buffer is flushed.
+## [v1.2](https://github.com/fabiolb/fabio/tree/v1.2) (2016-07-16)
 
-   Thanks to [@samm-git](https://github.com/samm-git) for the patch.
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.2rc4...v1.2)
 
- * [Issue #542](https://github.com/fabiolb/fabio/issues/542): Ignore host case when adding and matching routes
+**Fixed bugs:**
 
-  Fabio was forcing hostnames in routes added via Consul tags to lowercase.  This caused problems
-  with table lookups that were not case-insensitive.  The patch applied in #543 forces all routes added
-  via consul tags or the internal `addRoute` to have lower case hostnames in addition to forcing
-  hostnames to lowercase before performing table lookups.  This means that the host portion of routes and
-  host based table lookups in fabio are no longer case sensitive.
+- fabio 1.2rc3 panics with -v [\#128](https://github.com/fabiolb/fabio/issues/128)
 
-  Thanks to [@shantanugadgil](https://github.com/shantanugadgil) for the patch.
+## [v1.2rc4](https://github.com/fabiolb/fabio/tree/v1.2rc4) (2016-07-13)
 
- * [Issue #548](https://github.com/fabiolb/fabio/issues/548): Slow glob matching with large number of services
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.2rc3...v1.2rc4)
 
-   This patch adds the new `glob.matching.disabled` option which controls whether glob matching is enabled for
-   route lookups. If the number of routes is large then the glob matching can have a performance impact and
-   disabling it may help.
+## [v1.2rc3](https://github.com/fabiolb/fabio/tree/v1.2rc3) (2016-07-12)
 
-  Thanks to [@galen0624](https://github.com/galen0624) for the patch and
-  [@leprechau](https://github.com/leprechau) for the review.
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.1.6...v1.2rc3)
 
-#### Features
+## [v1.1.6](https://github.com/fabiolb/fabio/tree/v1.1.6) (2016-07-12)
 
- * [Issue #544](https://github.com/fabiolb/fabio/issues/544): Add $host pseudo variable
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.2rc2...v1.1.6)
 
-  This PR added support for `$host` pseudo variable that behaves similarly to the `$path` variable.
-  You should now be able to create a global redirect for requests received on any host to the same or different
-  request host on the same or different path when combined with the `$path` variable.  This allows for a truly global
-  protocol redirect of HTTP -> HTTPS traffic irrespective of host and path.
+**Implemented enhancements:**
 
-  Thanks to [@holtwilkins](https://github.com/holtwilkins) for the patch.
+- TLS handshake error: failed to verify client's certificate [\#108](https://github.com/fabiolb/fabio/issues/108)
 
-### [v1.5.9](https://github.com/fabiolb/fabio/releases/tag/v1.5.9) - 16 May 2018
+**Fixed bugs:**
 
-#### Notes
+- X-Forwarded-Port should use local port [\#122](https://github.com/fabiolb/fabio/issues/122)
 
- * [Issue #494](https://github.com/fabiolb/fabio/issues/494): Tests fail with Vault > 0.9.6 and Consul > 1.0.6
+**Closed issues:**
 
-   Needs more investigation.
+- Path problem [\#124](https://github.com/fabiolb/fabio/issues/124)
 
-#### Breaking Changes
+## [v1.2rc2](https://github.com/fabiolb/fabio/tree/v1.2rc2) (2016-06-23)
 
- * None
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.1.5...v1.2rc2)
 
-#### Bug Fixes
+## [v1.1.5](https://github.com/fabiolb/fabio/tree/v1.1.5) (2016-06-23)
 
- * [Issue #460](https://github.com/fabiolb/fabio/issues/460): Fix access logging when gzip is enabled
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.2rc1...v1.1.5)
 
-   Fabio was not writing access logs when the gzip compression was enabled.
+**Implemented enhancements:**
 
-   Thanks to [@tino](https://github.com/tino) for finding this and providing
-   and initial patch.
+- Allow routes to a service in warning status [\#117](https://github.com/fabiolb/fabio/pull/117) ([erikvanoosten](https://github.com/erikvanoosten))
 
- * [PR #468](https://github.com/fabiolb/fabio/pull/468): Fix the regex of the example proxy.gzip.contenttype
+**Closed issues:**
 
-   The example regexp for `proxy.gzip.contenttype` in `fabio.properties` was not properly escaped.
+- Fabio hangs for 30+ seconds for 204 response [\#120](https://github.com/fabiolb/fabio/issues/120)
 
-   Thanks to [@tino](https://github.com/tino) for the patch.
+## [v1.2rc1](https://github.com/fabiolb/fabio/tree/v1.2rc1) (2016-06-15)
 
- * [Issue #421](https://github.com/fabiolb/fabio/issues/421): Fabio routing to wrong backend
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.1.4...v1.2rc1)
 
-   Fabio does not close websocket connections if the connection upgrade fails. This can lead to
-   connections being routed to the wrong backend if there is another HTTP router like nginx in
-   front of fabio. The failed websocket connection creates a direct TCP tunnel to the original
-   backend server and that connection is not closed properly.
+## [v1.1.4](https://github.com/fabiolb/fabio/tree/v1.1.4) (2016-06-15)
 
-   The patches detect an unsuccessful handshake and close the connection properly.
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.1.3...v1.1.4)
 
-   Thanks to [@craigday](https://github.com/craigday) for the original reporting and debugging.
+**Implemented enhancements:**
 
-#### Improvements
+- Custom status code when no route found [\#107](https://github.com/fabiolb/fabio/issues/107)
+- Keep fabio registered in consul [\#100](https://github.com/fabiolb/fabio/issues/100)
+- Disable fabio health check in consul [\#99](https://github.com/fabiolb/fabio/issues/99)
+- Support PROXY protocol [\#97](https://github.com/fabiolb/fabio/issues/97)
 
- * [Issue #427](https://github.com/fabiolb/fabio/issues/427): Fabio does not remove service when one of the registered health-checks fail
+**Closed issues:**
 
-   If a service has more than one health check then the behavior in whether the
-   service is available differs between Consul and Fabio. Consul requires that
-   all health checks for a service need to pass in order to return a positive
-   DNS result. Fabio requires only one of the health checks to pass.
+- fabio should expose a /health endpoint  [\#112](https://github.com/fabiolb/fabio/issues/112)
+- Go 1.5 issue [\#109](https://github.com/fabiolb/fabio/issues/109)
 
-   A new config option `registry.consul.checksRequired` has been added which
-   defaults to the current fabio behavior of `one` passing health check for the
-   service to be added to the routing table. To make fabio behave like Consul
-   you can set the option to `all`.
+## [v1.1.3](https://github.com/fabiolb/fabio/tree/v1.1.3) (2016-05-19)
 
-   Fabio will make `all` the default as of version 1.6.
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.1.3rc2...v1.1.3)
 
-   Thanks to [@systemfreund](https://github.com/systemfreund) for the patch.
+**Implemented enhancements:**
 
- * [Issue #448](https://github.com/fabiolb/fabio/issues/448): Redirect http to https on the same destination
+- Keep sort order in UI stable [\#104](https://github.com/fabiolb/fabio/issues/104)
+- Trim whitespace around tag [\#103](https://github.com/fabiolb/fabio/issues/103)
+- SNI support? [\#85](https://github.com/fabiolb/fabio/issues/85)
 
-   Fabio will now handle redirecting from http to https on the same destination
-   without a redirect loop.
+## [v1.1.3rc2](https://github.com/fabiolb/fabio/tree/v1.1.3rc2) (2016-05-14)
 
-   Thanks to [@leprechau](https://github.com/leprechau) for the patch and to
-   [@atillamas](https://github.com/atillamas) for the original PR and the
-   discussion.
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.1.3rc1...v1.1.3rc2)
 
- * [PR #453](https://github.com/fabiolb/fabio/pull/453): Handle proxy chains of any length
+**Implemented enhancements:**
 
-   Fabio will now validate that all elements of the `X-Forwarded-For` header
-   are allowed by the given ACL of the route. See discussion in
-   [PR #449](https://github.com/fabiolb/fabio/pull/449) for details.
+- Add glob path matching \(an alternative to default prefix matching\) [\#93](https://github.com/fabiolb/fabio/pull/93) ([dkong](https://github.com/dkong))
 
-   Thanks to [@leprechau](https://github.com/leprechau) for the patch and to
-   [@atillamas](https://github.com/atillamas) for the original PR and the
-   discussion.
+## [v1.1.3rc1](https://github.com/fabiolb/fabio/tree/v1.1.3rc1) (2016-05-09)
 
- * [Issue #452](https://github.com/fabiolb/fabio/issues/452): Add improved glob matcher
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.1.2...v1.1.3rc1)
 
-   Fabio now uses the `github.com/gobaws/glob` package for glob matching which
-   allows more complex patterns.
+**Implemented enhancements:**
 
-   Thanks to [@sharbov](https://github.com/sharbov) for the patch.
+- Improve forward headers [\#98](https://github.com/fabiolb/fabio/issues/98)
+- Allow tags for fabio service registration [\#96](https://github.com/fabiolb/fabio/issues/96)
+- Expand experimental HTTP API [\#95](https://github.com/fabiolb/fabio/issues/95)
+- Drop default port from request [\#90](https://github.com/fabiolb/fabio/issues/90)
+- Use Address instead of ServiceAddress? [\#88](https://github.com/fabiolb/fabio/issues/88)
+- Expand ${DC} to consul datacenter [\#55](https://github.com/fabiolb/fabio/issues/55)
 
-#### Features
+**Closed issues:**
 
- * None
+- proxy handler error channel bug? [\#92](https://github.com/fabiolb/fabio/issues/92)
 
-### [v1.5.8](https://github.com/fabiolb/fabio/releases/tag/v1.5.8) - 18 Feb 2018
+## [v1.1.2](https://github.com/fabiolb/fabio/tree/v1.1.2) (2016-04-27)
 
-#### Breaking Changes
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.1.1...v1.1.2)
 
- * None
+**Fixed bugs:**
 
-#### Bug Fixes
+- Deleted routes hide visible routes [\#57](https://github.com/fabiolb/fabio/issues/57)
 
- * Fix windows build.
+**Closed issues:**
 
-   fabio 1.5.7 broke the Windows build but this wasn't detected since the new
-   build process did not build the Windows binaries. This has been fixed.
+- Recommended way to bind multiple fabio instances to public IP for HA [\#89](https://github.com/fabiolb/fabio/issues/89)
+- Windows support [\#86](https://github.com/fabiolb/fabio/issues/86)
+- How to load balance '/'? [\#83](https://github.com/fabiolb/fabio/issues/83)
+- register websockets with consul tags [\#82](https://github.com/fabiolb/fabio/issues/82)
+- fabio does not respect registry\_consul\_register\_ip from ENV [\#77](https://github.com/fabiolb/fabio/issues/77)
+- Not deregistering when consul health status fails  [\#71](https://github.com/fabiolb/fabio/issues/71)
+- question: configure through environment variables? [\#68](https://github.com/fabiolb/fabio/issues/68)
+- support middleware\(OWIN\) to execute some code before recirection [\#64](https://github.com/fabiolb/fabio/issues/64)
 
- * [Issue #438](https://github.com/fabiolb/fabio/pull/438): Do not add separator to `noroute.html` page
+**Merged pull requests:**
 
-   fabio 1.5.7 added support for multiple routing tables in Consul and added a
-   comment which described the origin to the output. The same comment was added
-   to the `noroute.html` page since the same code is used to fetch it. This
-   returned an invalid HTML page which has been fixed.
+- \#77 fix documentaion [\#78](https://github.com/fabiolb/fabio/pull/78) ([sielaq](https://github.com/sielaq))
+- Expose the docker ports in Dockerfile [\#76](https://github.com/fabiolb/fabio/pull/76) ([smancke](https://github.com/smancke))
+- Overworked header handling. [\#74](https://github.com/fabiolb/fabio/pull/74) ([smancke](https://github.com/smancke))
+- Broken link corrected. [\#65](https://github.com/fabiolb/fabio/pull/65) ([jest](https://github.com/jest))
 
-#### Improvements
+## [v1.1.1](https://github.com/fabiolb/fabio/tree/v1.1.1) (2016-02-22)
 
- * [PR #423](https://github.com/fabiolb/fabio/pull/423): TCP+SNI support arbitrary large Client Hello
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.1...v1.1.1)
 
-   With this patch fabio correctly parses `ClientHello` messages on TLS
-   connections up to their maximum size.
+**Merged pull requests:**
 
-   Thanks to [@DanSipola](https://github.com/DanSipola) for the patch.
+- Fix use of local ip in consul service registration [\#58](https://github.com/fabiolb/fabio/pull/58) ([jeanblanchard](https://github.com/jeanblanchard))
 
-#### Features
+## [v1.1](https://github.com/fabiolb/fabio/tree/v1.1) (2016-02-18)
 
- * [PR #426](https://github.com/fabiolb/fabio/pull/426): Add option to allow Fabio to register frontend services in Consul on behalf of user services
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.1rc1...v1.1)
 
-   With this patch fabio can register itself multiple times under different
-   names in Consul. By adding the `register=name` option to a route fabio will
-   register itself under that name as well.
+**Implemented enhancements:**
 
-   Thanks to [@rileyje](https://github.com/rileyje) for the patch.
+- Make read and write timeout configurable [\#53](https://github.com/fabiolb/fabio/issues/53)
 
- * [PR #442](https://github.com/fabiolb/fabio/pull/442): Add basic ip centric access control on routes
+## [v1.1rc1](https://github.com/fabiolb/fabio/tree/v1.1rc1) (2016-02-15)
 
-   With this patch fabio adds an `allow` and `deny` option to the routes which
-   allows for basic ip white and black listing of IPv4 and IPv6 addresses. See
-   http://fabiolb.net/feature/access-control/ for more details.
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.0.9...v1.1rc1)
 
-   Thanks to [@leprechau](https://github.com/leprechau) for the patch and
-   [@microadam](https://github.com/microadam) for the testing.
+## [v1.0.9](https://github.com/fabiolb/fabio/tree/v1.0.9) (2016-02-15)
 
-### [v1.5.7](https://github.com/fabiolb/fabio/releases/tag/v1.5.7) - 6 Feb 2018
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.0.8...v1.0.9)
 
-#### Breaking Changes
+**Implemented enhancements:**
 
- * None
+- Allow configuration of serviceip used during consul registration [\#48](https://github.com/fabiolb/fabio/issues/48)
+- Allow configuration via env vars [\#43](https://github.com/fabiolb/fabio/issues/43)
+- Cleanup metrics for deleted routes [\#41](https://github.com/fabiolb/fabio/issues/41)
+- HTTP2 support with latest Go [\#32](https://github.com/fabiolb/fabio/issues/32)
+- Support additional backends [\#12](https://github.com/fabiolb/fabio/issues/12)
 
-#### Bug Fixes
+**Fixed bugs:**
 
- * [Issue #434](https://github.com/fabiolb/fabio/issues/434): VaultPKI tests fail with go1.10rc1
+- Include services with check ids other than 'service:\*' [\#29](https://github.com/fabiolb/fabio/issues/29)
 
-   All unit tests pass now on go1.10rc1.
+**Closed issues:**
 
-#### Improvements
+- Move dependencies to vendor path [\#47](https://github.com/fabiolb/fabio/issues/47)
+- Add support for Consul ACL token to demo server [\#37](https://github.com/fabiolb/fabio/issues/37)
 
- * [Issue #369](https://github.com/fabiolb/fabio/issues/369): Warn if fabio is run as root
+## [v1.0.8](https://github.com/fabiolb/fabio/tree/v1.0.8) (2016-01-14)
 
-   fabio 1.5.7 emits a recurring warning when run as root. This can be disabled when using
-   the new `-insecure` flag which also provides a link to alternatives.
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.0.7...v1.0.8)
 
- * [Issue #433](https://github.com/fabiolb/fabio/issues/433): `proxy.noroutestatus` must be three digit code
+**Implemented enhancements:**
 
-   go1.10 will enforce that HTTP status codes must be three digit values `[100,1000)` and
-   and otherwise the handler will panic. This change enforces that the `proxy.noroutestatus`
-   has a valid status code value.
+- Consul ACL Token [\#36](https://github.com/fabiolb/fabio/issues/36)
 
-#### Features
+**Fixed bugs:**
 
- * [Issue #396](https://github.com/fabiolb/fabio/issues/396): treat `registry.consul.kvpath` as prefix
+- Detect when consul agent is down [\#26](https://github.com/fabiolb/fabio/issues/26)
+- fabio route not removed after consul deregister [\#22](https://github.com/fabiolb/fabio/issues/22)
 
-   This patch allows fabio to have multiple manual routing tables stored in consul, e.g.
-   under `fabio/config/foo` and `fabio/config/bar`. The routing table fragments are
-   concatenated in lexicographical order of the keys and the log output contains comments
-   to indicate to which key the segment belongs.
+**Closed issues:**
 
- * [PR #425](https://github.com/fabiolb/fabio/pull/425): Add support for HSTS headers
+- Session persistence [\#33](https://github.com/fabiolb/fabio/issues/33)
+- Build fails on master/last release tag [\#31](https://github.com/fabiolb/fabio/issues/31)
+- Documentation: make build before running ./fabio [\#24](https://github.com/fabiolb/fabio/issues/24)
 
-   fabio has now support for adding HSTS headers to the response.
+**Merged pull requests:**
 
-   Thanks to [@leprechau](https://github.com/leprechau) for the patch.
+- \[registry\] fallback to given local IP address [\#30](https://github.com/fabiolb/fabio/pull/30) ([doublerebel](https://github.com/doublerebel))
 
-### [v1.5.6](https://github.com/fabiolb/fabio/releases/tag/v1.5.6) - 5 Jan 2018
+## [v1.0.7](https://github.com/fabiolb/fabio/tree/v1.0.7) (2015-12-13)
 
-#### Breaking Changes
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.0.6...v1.0.7)
 
- * None
+**Fixed bugs:**
 
-#### Improvements
+- routes not removed when passing empty string [\#23](https://github.com/fabiolb/fabio/issues/23)
 
- * [Issue #216](https://github.com/fabiolb/fabio/issues/216)/[Issue #383](https://github.com/fabiolb/fabio/issues/383)/[PR #414](https://github.com/fabiolb/fabio/pull/414): Do not require globally unique service IDs
+**Closed issues:**
 
-	Since version 1.0 fabio required all service ids in Consul to be globally
-	unique although service ids only have to be unique per Consul agent. This patch fixes this.
+- server demo: Consul health check fails [\#21](https://github.com/fabiolb/fabio/issues/21)
+- Demo \(shebang, documentation\) [\#20](https://github.com/fabiolb/fabio/issues/20)
+- \(Docker\) Error initializing backend. [\#19](https://github.com/fabiolb/fabio/issues/19)
 
-	Thanks to [@dropje86](https://github.com/dropje86) and [@alvaroaleman](https://github.com/alvaroaleman) for the patch!
+## [v1.0.6](https://github.com/fabiolb/fabio/tree/v1.0.6) (2015-12-01)
 
- * [Issue #408](https://github.com/fabiolb/fabio/issues/408): Log Consul state changes as DEBUG
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.0.5...v1.0.6)
 
-   `Health changed to xxx` and similar log messages will be logged as `DEBUG`.
+**Implemented enhancements:**
 
- * [PR #415](https://github.com/fabiolb/fabio/pull/415): Honor the `-version` flag
+- Filter routing table not on tags [\#16](https://github.com/fabiolb/fabio/issues/16)
+- Support websockets [\#9](https://github.com/fabiolb/fabio/issues/9)
 
-   `fabio -version` does now what you would expect it to do.
+**Fixed bugs:**
 
-### [v1.5.5](https://github.com/fabiolb/fabio/releases/tag/v1.5.5) - 21 Dec 2017
+- Traffic shaping does not match on service name [\#15](https://github.com/fabiolb/fabio/issues/15)
 
-#### Breaking Changes
+**Closed issues:**
 
- * None
+- Manage manual overrides via UI [\#18](https://github.com/fabiolb/fabio/issues/18)
 
-#### Features
+**Merged pull requests:**
 
- * [PR #398](https://github.com/fabiolb/fabio/pull/398): Add custom no route HTML page
+- README: fix typos [\#14](https://github.com/fabiolb/fabio/pull/14) ([ceh](https://github.com/ceh))
 
-   This patch adds support for a custom HTML template stored in Consul or on the file system which will be returned when
-   there is no route.
+## [v1.0.5](https://github.com/fabiolb/fabio/tree/v1.0.5) (2015-11-11)
 
-   Thanks to [@tino](https://github.com/tino) for the patch!
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.0.4...v1.0.5)
 
-### [v1.5.4](https://github.com/fabiolb/fabio/releases/tag/v1.5.4) - 10 Dec 2017
+**Implemented enhancements:**
 
-#### Breaking Changes
+- Support Forwarded and X-Forwarded-For headers [\#10](https://github.com/fabiolb/fabio/issues/10)
 
- * None
+**Merged pull requests:**
 
-#### Features
+- fix vet warning [\#13](https://github.com/fabiolb/fabio/pull/13) ([juliendsv](https://github.com/juliendsv))
 
- * [Issue #87](https://github.com/fabiolb/fabio/issues/87)/[PR #395](https://github.com/fabiolb/fabio/pull/395): Add redirect support
+## [v1.0.4](https://github.com/fabiolb/fabio/tree/v1.0.4) (2015-11-03)
 
-   This patch adds support to redirect a request for a matching route to
-   another URL. If the `redirect=<code>` option is set on a route fabio will
-   send a redirect response to the dst address with the given code.
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.0.3...v1.0.4)
 
-   The syntax for the `urlprefix-` tag is slightly different since the
-   destination address is usually generated from the service registration
-   stored in Consul.
+**Implemented enhancements:**
 
-   The `$path` pseudo-variable can be used to include the original request URI
-   in the destination target.
+- Support SSL/TLS client cert authentication [\#8](https://github.com/fabiolb/fabio/issues/8)
 
-   Thanks to [@ctlajoie](https://github.com/ctlajoie) for providing this patch!
+**Closed issues:**
 
-```
-# redirect /foo to https://www.foo.com/
-route add svc /foo https://www.foo.com/ opts "redirect=301"
+- List among Consul community tools [\#6](https://github.com/fabiolb/fabio/issues/6)
 
-# redirect /foo to https://www.foo.com/
-urlprefix-/foo redirect=301,https://www.foo.com/
+**Merged pull requests:**
 
-# redirect /foo to https://www.foo.com/foo
-urlprefix-/foo redirect=301,https://www.foo.com$path
-```
+- Fixes broken fragment identifier link [\#11](https://github.com/fabiolb/fabio/pull/11) ([budnik](https://github.com/budnik))
 
-#### Bug Fixes
+## [v1.0.3](https://github.com/fabiolb/fabio/tree/v1.0.3) (2015-10-26)
 
- * [Issue #385](https://github.com/fabiolb/fabio/issues/385): opts with host= with multiple routes does not work as expected
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.0.2...v1.0.3)
 
-   When multiple routes for the same path had different `host` options then only the one set on the
-   first route worked. This has been fixed so that the `Host` header is now set according to the
-   selected target.
+**Merged pull requests:**
 
- * [Issue #389](https://github.com/fabiolb/fabio/issues/389): match exact host before glob matches
+- Correcting a typo [\#5](https://github.com/fabiolb/fabio/pull/5) ([mdevreugd](https://github.com/mdevreugd))
 
-   When there is an exact match and a glob match for a hostname then the exact match
-   is preferred.
+## [v1.0.2](https://github.com/fabiolb/fabio/tree/v1.0.2) (2015-10-23)
 
-#### Improvements
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.0.1...v1.0.2)
 
- * [PR #380](https://github.com/fabiolb/fabio/pull/380): Set X-Forwared-Host header if not present
+**Merged pull requests:**
 
-   Fabio now sets the `X-Forwarded-Host` header if it isn't present.
+- Honor consul.url and consul.addr from config file [\#3](https://github.com/fabiolb/fabio/pull/3) ([jeinwag](https://github.com/jeinwag))
 
- * [Issue #400](https://github.com/fabiolb/fabio/issues/400): Do not exit on SIGHUP
+## [v1.0.1](https://github.com/fabiolb/fabio/tree/v1.0.1) (2015-10-21)
 
-   Fabio will now ignore the `SIGHUP` signal. Additionally, the caught signal is logged with the action (exit or ignore).
+[Full Changelog](https://github.com/fabiolb/fabio/compare/v1.0.0...v1.0.1)
 
-### [v1.5.3](https://github.com/fabiolb/fabio/releases/tag/v1.5.3) - 3 Nov 2017
 
-#### Breaking Changes
 
- * None
-
-#### Features
-
- * [PR #315](https://github.com/fabiolb/fabio/pull/315)/[Issue #135](https://github.com/fabiolb/fabio/issues/135): Vault PKI cert source
-
-   This adds support for using [Vault](https://vaultproject.io/) as a PKI cert source.
-
-   Thanks to [@pschultz](https://github.com/pschultz) for providing this patch!
-
-#### Bug Fixes
-
- * [Issue #306](https://github.com/fabiolb/fabio/issues/306): Add metrics for TCP and TCP+SNI proxy
-
-   fabio now reports metrics for TCP and TCP+SNI connections.
-
- * [Issue #330](https://github.com/fabiolb/fabio/issues/330): Strip option has no effect on websockets
-
-   The `strip=/prefix` option now works correctly on web sockets
-
- * [Issue #350](https://github.com/fabiolb/fabio/issues/350): statsd - unable to parse line - gf metric
-
-   fabio now correctly reports mean values for timers as gauge values to statsd.
-
-#### Improvements
-
- * [Issue #320](https://github.com/fabiolb/fabio/issues/320): FATAL error when metrics cannot be delivered
-
-   fabio adds a `metrics.timeout` and a `metrics.retry` config parameter to control when the
-   the metrics backend should become available and changes the default behavior to retry for
-   some time before giving up.
-
- * [PR #366](https://github.com/fabiolb/fabio/pull/366): add leveled logging
-
-   Add a `-log-level` parameter which allows to control the log level.
-
- * [Issue #367](https://github.com/fabiolb/fabio/issues/367): nodes and services in maintenance can cause excessive logging
-
-   Notifications about nodes and services in maintenance mode are now logged as DEBUG and therefore
-   filtered out by default.
-
- * [Issue #375](https://github.com/fabiolb/fabio/issues/375): `host` option allows to set `Host` header
-
-   The `host` option now allows to set the `Host` header to the provided value in addition to the special `dst` value.
-
-### [v1.5.2](https://github.com/fabiolb/fabio/releases/tag/v1.5.2) - 24 Jul 2017
-
-#### Breaking Changes
-
- * None
-
-#### Bug Fixes
-
- * [Issue #305](https://github.com/fabiolb/fabio/issues/305): 1.5.0 config compatibility problem
-
-   In fabio 1.5.0 the key/value parsing was refactored and that introduced a bug where a second `=`
-   failed to parse correctly and prevented fabio from starting.
-
-#### Improvements
-
- * [PR #321](https://github.com/fabiolb/fabio/pull/321): Cleanup TCP proxy connections
-
-   This patch updates the internal connection map when a connection is closed.
-
-   Thanks to [@crypto89](https://github.com/crypto89) for this patch.
-
-### [v1.5.1](https://github.com/fabiolb/fabio/releases/tag/v1.5.1) - 6 Jul 2017
-
-#### Improvements
-
- * Added Code of Conduct
-
- * Add support for `detail` format for `log.routes.format`
-
-   The `detail` format prints the routing table with more detail than the other formats
-   and it isn't intended to be machine readable.
-
-```
-./fabio -log.routes.format detail
-2017/06/19 11:51:14 [INFO] Updated config to
-+-- host=:3306
-|   +-- path=
-|       |-- addr=127.0.0.1:5001 weight 0.20 slots 2000/10000
-|       +-- addr=127.0.0.1:5000 weight 0.80 slots 8000/10000
-+-- host=:3307
-    +-- path=
-        +-- addr=127.0.0.1:5002 weight 1.00 slots 1/1
-```
-
- * [Issue #42](https://github.com/fabiolb/fabio/issues/42): Add support for 'weight=f' option in urlprefix tag
-
-   This allows to specify a manual weight on the `urlprefix-` tag. This can be used to
-   manually distribute the load between multiple TCP endpoints or to have an active/standby
-   setup by setting `weight=1` on the active and `weight=0` on the standby server.
-
- * [Issue #274](https://github.com/fabiolb/fabio/issues/274)/[PR #314](https://github.com/fabiolb/fabio/pull/314): Avoid premature Vault token renewal
-
-   Non-renewable tokens are no longer renewed. In addition, the token TTL is honored for token that can
-   be renewed.
-
-   Thanks to [@pschultz](https://github.com/pschultz) for this patch.
-
- * [PR #313](https://github.com/fabiolb/fabio/pull/313): Tests work now with Vault 0.7.x
-
-   Thanks to [@pschultz](https://github.com/pschultz) for this patch.
-
-### [v1.5.0](https://github.com/fabiolb/fabio/releases/tag/v1.5.0) - 7 Jun 2017
-
-#### Breaking Changes
-
- * Support for the deprecated `proxy.addr` format `:port;certfile;keyfile;cafile` has been dropped.
-   Please use instead `proxy.addr` in combination with a
-   [certificate store](https://github.com/fabiolb/fabio/wiki/Features#certificate-stores).
-
-#### Bug Fixes
-
-#### Improvements
-
- * Upgrade to go1.8.3
-
- * [Issue #133](https://github.com/fabiolb/fabio/issues/133): websockets failing with 500 on rancher
-
-   Rancher is a Java application which uses `java.net.URL` to compose
-   the original request URL from the `X-Forwarded-Proto` and other
-   headers. The `java.net.URL` class does not support the `ws` or `wss`
-   protocol without a matching `java.net.URLStreamHandler`
-   implementation. Java code should use the `java.net.URI` class for
-   these types of URLs instead. However, the `X-Forwarded-Proto` header
-   isn't specified as the `Forwarded` header ([RFC
-   7239](https://tools.ietf.org/html/rfc7239#section-5.4)) and the
-   common usage is to only use either `http` or `https` for websocket
-   connections. In order not to break existing applications fabio now
-   sets the `X-Forwarded-Proto` header to `http` for `ws` and to `https`
-   for `wss` connections.
-
- * [PR #292](https://github.com/fabiolb/fabio/pull/292): Add unique request id
-
-   fabio can now add a unique request id in form of a UUIDv4 to each request as a header.
-   The name of the header is configurable and the value of the header can be logged
-   to the access log.
-
-   Thanks to [@bkmit](https://github.com/bkmit) for this patch.
-
- * [Issue #249](https://github.com/fabiolb/fabio/issues/249): Make TLS version and cipher suites configurable
-
-   fabio now allows to configure the TLS parameters for the handshake as part of the
-   `proxy.addr` configuration. See `fabio.properties` for details.
-
- * [Issue #280](https://github.com/fabiolb/fabio/issues/280): Add protocol data to `Forwarded` header
-
-   fabio adds `httpproto`, `tlsver` and `tlsciphers` to the `Forwarded` header.
-
- * [Issue #290](https://github.com/fabiolb/fabio/issues/290): Add profiling support
-
-   fabio now supports optional memory, cpu, mutex and block (contention) profiling.
-   Profiling is enabled through the `profile.mode` flag which determines the mode.
-   The `profile.path` flag determines the output path.
-
- * [Issue #294](https://github.com/fabiolb/fabio/issues/294): Use upstream host name for request
-
-    Add support for a `host=dst` option on the route to trigger fabio to
-	use the target hostname for the outgoing request instead of the
-	host name provided by the original request.
-
- * [Issue #296](https://github.com/fabiolb/fabio/issues/296): Sync X-Forwarded-Proto and Forwarded header when possible
-
-   The X-Forwarded-Proto header and the proto value of the Forwarded
-   header can get out of sync when an upstream load balancer sets the
-   one but not the other header. Fabio would then not touch the existing
-   header and derive the value for the unset header based on the
-   connection.
-
-   This patch changes this behavior so that the value for the missing
-   header is derived from the other one. When both headers are set they are
-   both left untouched since it cannot be decided which one is the source
-   of truth.
-
- * [Issue #300](https://github.com/fabiolb/fabio/issues/300): Support Gzip encoding for websockets
-
-   Setting the `Accept-Encoding` header to `gzip` and enabling gzip compression
-   triggered a bug in fabio which prevented the use of gzip compression on
-   websocket connections.
-
- * [Issue #302](https://github.com/fabiolb/fabio/issues/302): Add support for read-only UI
-
-   The `ui.access` parameter can be used to configure the ui endpoint to
-   be in either read-write or read-only mode.
-
- * [Issue #304](https://github.com/fabiolb/fabio/issues/304): Add support for X-Forwarded-Prefix header
-
-   The `X-Forwarded-Prefix` header is added when the `strip=/foo` option
-   is used on a route and contains the path that was stripped (e.g.
-   `/foo`).
-
-### [v1.4.4](https://github.com/fabiolb/fabio/releases/tag/v1.4.4) - 8 May 2017
-
-#### Bug Fixes
-
- * [Issue #271](https://github.com/fabiolb/fabio/issues/271): Support websocket for HTTPS upstream
-
-   This patch fixes that websocket connections are not forwarded to an HTTPS upstream server.
-
- * [Issue #279](https://github.com/fabiolb/fabio/issues/279): fabio does not start with multiple listeners
-
-   Commit [5a23cb1](https://github.com/fabiolb/fabio/commit/5a23cb19dc64a30ee40c42bd3ec1dde289a91033)
-   found in [#265](https://github.com/fabiolb/fabio/issues/265) added code for
-   not swallowing the errors but did not capture the loop variable for the go
-   routines when starting listeners. This prevented fabio from starting up
-   properly when being configured with more than one listener.
-
- * [Issue #289](https://github.com/fabiolb/fabio/issues/289): Fabio does not advertise http/1.1 on TLS connections
-
-   This patch makes fabio announce both `h2` and `http/1.1` as application level protocols
-   on TLS connections.
-
-#### Improvements
-
- * The listener code no longer swallows the errors and exits if it cannot create
-   a listening socket.
-
- * [Issue #278](https://github.com/fabiolb/fabio/issues/278): Add service name to access log fields
-
-   Add `$upstream_service` which contains the service name of the selected target
-   to the available access log fields.
-
-### [v1.4.3](https://github.com/fabiolb/fabio/releases/tag/v1.4.3) - 24 Apr 2017
-
-#### Bug Fixes
-
- * [Issue #269](https://github.com/fabiolb/fabio/issues/269): Access log cannot be disabled
-
-   The access logging feature that was added in v1.4.1 did not allow to disable the access logging
-   output and all fabio instances were writing an access log by default. Also, the logging setup
-   code would leave fabio registered in consul in case of a failure.
-
-#### Improvements
-
- * [PR #268](https://github.com/fabiolb/fabio/pull/268): Add support for TLSSkipVerify for https consul fabio check
-
-   When the fabio admin port is configured to use HTTPS then the consul health check has
-   to use HTTPS as well. The new `registry.consul.register.checkTLSSkipVerify` option allows
-   to disable TLS certificate validation for this check. This requires consul 0.7.2 or higher.
-
-   Thanks to [@Ginja](https://github.com/Ginja) for providing this patch.
-
- * Demo server supports HTTPS
-
-   The `demo/server/server` now supports `https` and `wss` to test the
-   HTTPS upstream support. To run an HTTPS server run the following
-
-   ```shell
-   # generate some test certs
-   cd $GOPATH/src/github.com/fabiolb/fabio
-   build/issue-225-gen-cert.bash
-
-   # build and run the demo server
-   cd demo/server
-   go build
-   ./server -certFile ../cert/server/server-cert.pem -keyFile ../cert/server/server-key.pem -proto https -prefix "/foo tlsskipverify=true"
-   ```
-
- * Add route options to UI
-
-   The UI now shows the combined options from all targets for a route.
-
- * Add fabio logo to UI
-
-   The Fabio logo is displayed on all UI pages.
-
-### [v1.4.2](https://github.com/fabiolb/fabio/releases/tag/v1.4.2) - 10 Apr 2017
-
-The vault tests do not yet pass with vault 0.7.0 and support for vault 0.7.0 has yet to be confirmed.
-fabio is known to work with vault 0.6.4.
-
-#### Features
-
- * [PR #257](https://github.com/fabiolb/fabio/pull/257), [Issue #181](https://github.com/fabiolb/fabio/issues/181): Add HTTPS Upstream Support
-
-   Upstream servers can now be served via HTTPS. To enable this for a route add the `proto=https` option
-   to the `urlprefix-` tag. The upstream certificate needs to be in the system certificate chain for the
-   certificate validation to succeed. To disable certificate validation for upstream requests add the
-   `tlsskipverify=true` option. Support for certificate stores for upstream servers may come at a later
-   point.
-
-   Thanks to [@shadowfax-chc](https://github.com/shadowfax) for providing this patch.
-
-   See: https://github.com/fabiolb/fabio/wiki/Features#https-upstream-support
-
- * [PR #258](https://github.com/fabiolb/fabio/pull/258): Allow UI/API to be served over HTTPS
-
-   The UI/API endpoint can now be served via HTTPS. To enable this configure the `ui.addr` property
-   with a `cs=<cert store>` option like the `proxy.addr` listeners.
-
-   Thanks to [@shadowfax-chc](https://github.com/shadowfax) for providing this patch.
-
-#### Improvements
-
- * Upgrade to go1.8.1
- * Run tests with consul 0.8.0
- * Improve CHANGELOG
-
-### [v1.4.1](https://github.com/fabiolb/fabio/releases/tag/v1.4.1) - 4 Apr 2017
-
-#### Features
-
- * [Issue #80](https://github.com/fabiolb/fabio/issues/80): Add support for access logging
-
-   fabio now supports configurable access logging. By default access logging is disabled and can
-   be enabled with `log.access.target=stdout`. The default format is the
-   [Common Log Format](https://en.wikipedia.org/wiki/Common_Log_Format) but can be changed
-   to either the [Combined Log Format](https://httpd.apache.org/docs/1.3/logs.html#combined)
-   or a custom log format by setting `log.access.format`
-
-   Thanks to [@beyondblog](https://github.com/beyondblog) for providing the initial patch.
-
-   See: https://github.com/fabiolb/fabio/wiki/Features#access-logging
-
-### [v1.4](https://github.com/fabiolb/fabio/releases/tag/v1.4) - 25 Mar 2017
-
-#### Features
-
- * [Issue #1](https://github.com/fabiolb/fabio/issues/1), [Issue #179](https://github.com/fabiolb/fabio/issues/179): Add generic TCP Proxy support
-
-   fabio now supports raw TCP proxying support by setting the `proto=tcp` option on the
-   `urlprefix-` tag. The target needs to be the external port of the service, e.g.
-   `urlprefix-:3306` for a MySQL proxy. fabio needs to have a TCP listener configured for
-   that port through the `proxy.addr` option, e.g. `proxy.addr=:3306;proto=tcp`.
-
-   The TCP proxy also supports TLS which is configured through the `cs=<cert store>`
-   option like the HTTPS listeners.
-
- * [Issue #163](https://github.com/fabiolb/fabio/issues/163): Support glob host matching
-
-   This patch adds support for glob host matching the hostname in routes like
-   `urlprefix-*.foo.com/bar`.
-
-#### Improvements
-
- * Upgrade to Go 1.8 and drop support for Go 1.7
-
- * [Issue #178](https://github.com/fabiolb/fabio/issues/178): Add tests and timeouts to TCP+SNI proxy
-
-   Add full integration tests and support for read/write timeouts through the `rt=` and `wt=`
-   options on the listener config for the TCP+SNI proxy. The initial implementation was only
-   tested manually.
-
- * [Issue #248](https://github.com/fabiolb/fabio/issues/248): Start listener after routing table is initialized
-
-   fabio now waits for the first routing table before serving requests. This should remove
-   503s during restarts on heavily loaded sites.
-
-### [v1.3.8](https://github.com/fabiolb/fabio/releases/tag/v1.3.8) - 14 Feb 2017
-
-#### Features
-
- * [Issue #219](https://github.com/fabiolb/fabio/issues/219): Support absolute URLs
-
-#### Improvements
-
- * Upgrade to Go 1.7.5
- * [Issue #238](https://github.com/fabiolb/fabio/issues/238): Make route update logging format configurable. Log delta by default
- * [Issue #240](https://github.com/fabiolb/fabio/issues/240): Retry registry during startup
-
-### [v1.3.7](https://github.com/fabiolb/fabio/releases/tag/v1.3.7) - 19 Jan 2017
-
-#### Features
-
- * [Issue #44](https://github.com/fabiolb/fabio/issues/44), [Issue #124](https://github.com/fabiolb/fabio/issues/124), [Issue #164](https://github.com/fabiolb/fabio/issues/164): Support path stripping
- * [Issue #201](https://github.com/fabiolb/fabio/issues/201): Support deleting routes by tag
-
-#### Bug Fixes
-
- * [Issue #207](https://github.com/fabiolb/fabio/issues/207): Bad statsd mean metric format
- * [Issue #217](https://github.com/fabiolb/fabio/issues/217): fabio 1.3.6 UI displays host and path as 'undefined' in the routes page
- * [Issue #218](https://github.com/fabiolb/fabio/issues/218): requests and notfound metric missing
-
-### [v1.3.6](https://github.com/fabiolb/fabio/releases/tag/v1.3.6) - 17 Jan 2017
-
-#### Improvements
-
- * Upgrade to Go 1.7.4
- * [Issue #111](https://github.com/fabiolb/fabio/issues/111): Refactor urlprefix tags (step 1: options and new parser)
- * [Issue #186](https://github.com/fabiolb/fabio/issues/186): runtime error: integer divide by zero
- * [Issue #199](https://github.com/fabiolb/fabio/issues/199): Refactor config loader tests
- * [Issue #215](https://github.com/fabiolb/fabio/issues/215): Re-enable HTTP/2 support
-
-### [v1.3.5](https://github.com/fabiolb/fabio/releases/tag/v1.3.5) - 30 Nov 2016
-
-#### Improvements
-
- * [Issue #182](https://github.com/fabiolb/fabio/issues/182): Initialize Vault client better
- * [Issue #183](https://github.com/fabiolb/fabio/issues/183): Websocket header casing
- * [Issue #189](https://github.com/fabiolb/fabio/issues/189): missing 'cs' in map
- * [Issue #194](https://github.com/fabiolb/fabio/issues/194): Remove proxy.header.tls header from inbound request
- * [Issue #197](https://github.com/fabiolb/fabio/issues/197): Add support for '--version'
-
-### [v1.3.4](https://github.com/fabiolb/fabio/releases/tag/v1.3.4) - 28 Oct 2016
-
-#### Features
-
- * [Issue #119](https://github.com/fabiolb/fabio/issues/119): Transparent response body compression
-
-#### Improvements
-
- * Upgrade to Go 1.7.3
-
-### [v1.3.3](https://github.com/fabiolb/fabio/releases/tag/v1.3.3) - 12 Oct 2016
-
-#### Improvements
-
- * Drop support for Go 1.6 since tests now use `t.Run()`
- * [PR #167](https://github.com/fabiolb/fabio/pull/167): Use Go's net.JoinHostPort which will auto-detect ipv6
- * [Issue #177](https://github.com/fabiolb/fabio/issues/177): TCP+SNI proxy does not work with PROXY protocol
-
-#### Bug Fixes
-
- * [Issue #172](https://github.com/fabiolb/fabio/issues/172): Consul cert store URL with token not parsed correctly
-
-### [v1.3.2](https://github.com/fabiolb/fabio/releases/tag/v1.3.2) - 11 Sep 2016
-
-#### Bug Fixes
-
- * [Issue #159](https://github.com/fabiolb/fabio/issues/159): Panic on invalid response
-
-### [v1.3.1](https://github.com/fabiolb/fabio/releases/tag/v1.3.1) - 9 Sep 2016
-
-#### Bug Fixes
-
- * [Issue #157](https://github.com/fabiolb/fabio/issues/157): ParseListen may set the wrong protocol
-
-### [v1.3](https://github.com/fabiolb/fabio/releases/tag/v1.3) - 9 Sep 2016
-
-#### Features
-
- * [Issue #1](https://github.com/fabiolb/fabio/issues/1): Add TCP proxy with SNI support (EXPERIMENTAL)
- * [Issue #138](https://github.com/fabiolb/fabio/issues/138): Add option to disable cert fallback
- * [Issue #147](https://github.com/fabiolb/fabio/issues/147): Support multiple metrics libraries
- * [Issue #151](https://github.com/fabiolb/fabio/issues/151)/[PR #150](https://github.com/fabiolb/fabio/pull/150): Add support for Circonus metrics
-
-#### Improvements
-
- * [Issue #125](https://github.com/fabiolb/fabio/issues/125): Extended metrics
- * [Issue #134](https://github.com/fabiolb/fabio/issues/134): Vault token should not require 'root' or 'sudo' privileges
- * [PR #154](https://github.com/fabiolb/fabio/pull/154): Make route metric names configurable
-
-### [v1.2.1](https://github.com/fabiolb/fabio/releases/tag/v1.2.1) - 25 Aug 2016
-
-#### Features
-
- * [Issue #73](https://github.com/fabiolb/fabio/pull/73)/[PR #139](https://github.com/fabiolb/fabio/pull/139): Add statsd support
- * [Issue #129](https://github.com/fabiolb/fabio/issues/129): Server-sent events support
-
-#### Improvements
-
- * [Issue #136](https://github.com/fabiolb/fabio/issues/136): Always deregister from consul
- * [PR #143](https://github.com/fabiolb/fabio/pull/143): Improve error message on missing trailing slash
-
-#### Bug Fixes
-
- * [Issue #146](https://github.com/fabiolb/fabio/issues/146): fabio fails to start with "[FATAL] 1.2. missing 'cs' in cs"
-
-### [v1.2](https://github.com/fabiolb/fabio/releases/tag/v1.2) - 16 Jul 2016
-
-#### Features
-
- * [Issue #27](https://github.com/fabiolb/fabio/issues/27): Change certificates via API
- * [Issue #70](https://github.com/fabiolb/fabio/issues/70): Support Vault
- * [Issue #85](https://github.com/fabiolb/fabio/issues/85): SNI support
-
-#### Improvements
-
- * [Issue #28](https://github.com/fabiolb/fabio/issues/28): Refactor listener config
- * [Issue #79](https://github.com/fabiolb/fabio/issues/79): Refactor config loading to use flag sets
-
-### [v1.1.6](https://github.com/fabiolb/fabio/releases/tag/v1.1.6) - 12 Jul 2016
-
-#### Bug Fixes
-
- * [Issue #108](https://github.com/fabiolb/fabio/issues/108): TLS handshake error: failed to verify client's certificate
- * [Issue #122](https://github.com/fabiolb/fabio/issues/122): X-Forwarded-Port should use local port
-
-### [v1.1.5](https://github.com/fabiolb/fabio/releases/tag/v1.1.5) - 23 Jun 2016
-
-#### Improvements
-
- * [PR #117](https://github.com/fabiolb/fabio/pull/117): Allow routes to a service in warning status
-
-### [v1.1.4](https://github.com/fabiolb/fabio/releases/tag/v1.1.4) - 15 Jun 2016
-
-#### Improvements
-
- * [Issue #99](https://github.com/fabiolb/fabio/issues/99): Disable fabio health check in consul
- * [Issue #100](https://github.com/fabiolb/fabio/issues/100): Keep fabio registered in consul
- * [Issue #107](https://github.com/fabiolb/fabio/issues/107): Custom status code when no route found
-
-### [v1.1.3](https://github.com/fabiolb/fabio/releases/tag/v1.1.3) - 20 May 2016
-
-#### Features
-
- * [Issue #95](https://github.com/fabiolb/fabio/issues/95): Expand experimental HTTP API
- * [Issue #97](https://github.com/fabiolb/fabio/issues/97): Support PROXY protocol
- * [PR #93](https://github.com/fabiolb/fabio/pull/93): Add glob path matching
-
-#### Improvements
-
- * Drop support for Go 1.5
- * [Issue #55](https://github.com/fabiolb/fabio/issues/55): Expand ${DC} to consul datacenter
- * [Issue #96](https://github.com/fabiolb/fabio/issues/96): Allow tags for fabio service registration
- * [Issue #98](https://github.com/fabiolb/fabio/issues/98): Improve forward header
- * [Issue #103](https://github.com/fabiolb/fabio/issues/103): Trim whitespace around tag
- * [Issue #104](https://github.com/fabiolb/fabio/issues/104): Keep sort order in UI stable
-
-### [v1.1.2](https://github.com/fabiolb/fabio/releases/tag/v1.1.2) - 27 Apr 2016
-
-#### Improvements
-
- * Upgrade to Go 1.5.4 and Go 1.6.2
- * [PR #74](https://github.com/fabiolb/fabio/pull/74): Improve forward header handling
- * [Issue #77](https://github.com/fabiolb/fabio/issues/77): Fix registry.consul.register.addr example in properties
- * [Issue #88](https://github.com/fabiolb/fabio/issues/88): Use consul node address
- * [Issue #90](https://github.com/fabiolb/fabio/issues/90): Drop default port from request
-
-### [v1.1.1](https://github.com/fabiolb/fabio/releases/tag/v1.1.1) - 22 Feb 2016
-
-#### Improvements
-
- * [Issue #57](https://github.com/fabiolb/fabio/issues/57): Deleted routes hide visible routes
- * [Issue #59](https://github.com/fabiolb/fabio/issues/59): Latest fabio docker image fails consul check
- * [PR #58](https://github.com/fabiolb/fabio/pull/58): Fix use of local ip in consul service registration
-
-### [v1.1](https://github.com/fabiolb/fabio/releases/tag/v1.1) - 18 Feb 2016
-
-#### Features
-
- * [Issue #12](https://github.com/fabiolb/fabio/issues/12): Support additional backends
- * [Issue #32](https://github.com/fabiolb/fabio/issues/32): HTTP2 support with latest Go
- * [Issue #43](https://github.com/fabiolb/fabio/issues/43): Allow configuration via env vars
-
-#### Improvements
-
- * Drop support for Go 1.4 and build for both Go 1.5.3 and Go 1.6
- * [Issue #37](https://github.com/fabiolb/fabio/issues/37): Add support for consul ACL token to demo server
- * [Issue #41](https://github.com/fabiolb/fabio/issues/41): Cleanup metrics for deleted routes
- * [Issue #47](https://github.com/fabiolb/fabio/issues/47): Move dependencies to vendor path
- * [Issue #48](https://github.com/fabiolb/fabio/issues/48): Allow configuration of serviceip used during consul registration
- * [PR #49](https://github.com/fabiolb/fabio/pull/49): Fix up use of addr in service registration
-
-### [v1.0.9](https://github.com/fabiolb/fabio/releases/branch/v1.0.9) - 16 Jan 2016
-
-#### Improvements
-
- * [Issue #53](https://github.com/fabiolb/fabio/issues/53): Make read and write timeout configurable
-
-### [v1.0.8](https://github.com/fabiolb/fabio/releases/tag/v1.0.8) - 14 Jan 2016
-
-#### Features
-
- * [Issue #36](https://github.com/fabiolb/fabio/issues/36): Add support for consul ACL token
-
-#### Improvements
-
- * Upgrade to Go 1.5.3
- * [Issue #29](https://github.com/fabiolb/fabio/issues/29): Include service with check ids other than 'service:*'
- * [Issue #30](https://github.com/fabiolb/fabio/issues/30): Register fabio with local ip address as fallback
-
-### [v1.0.7](https://github.com/fabiolb/fabio/releases/tag/v1.0.7) - 13 Dec 2015
-
-#### Improvements
-
- * [Issue #22](https://github.com/fabiolb/fabio/issues/22): fabio route not removed after consul deregister
- * [Issue #23](https://github.com/fabiolb/fabio/issues/23): routes not removed when passing empty string
- * [Issue #26](https://github.com/fabiolb/fabio/issues/26): Detect when consul agent is down
- * Allow to override title and color UI
-
-### [v1.0.6](https://github.com/fabiolb/fabio/releases/tag/v1.0.6) - 01 Dec 2015
-
-#### Improvements
-
- * [Issue #9](https://github.com/fabiolb/fabio/issues/9): Enabled raw websocket proxy by default
- * [Issue #15](https://github.com/fabiolb/fabio/issues/15): Traffic shaping now matches on service
- * [Issue #16](https://github.com/fabiolb/fabio/issues/16): Improved Web UI with better filtering
- * [Issue #18](https://github.com/fabiolb/fabio/issues/18): Manage manual overrides via ui
-
-### [v1.0.5](https://github.com/fabiolb/fabio/releases/tag/v1.0.5) - 11 Nov 2015
-
-#### Features
-
- * [Issue #9](https://github.com/fabiolb/fabio/issues/9): Add experimental support for web sockets
- * [Issue #10](https://github.com/fabiolb/fabio/issues/10): Add support for `Forwarded` and `X-Forwarded-For` header
-
-#### Improvements
-
- * Add `proxy.localip` to set proxy ip address for headers
-
-### [v1.0.4](https://github.com/fabiolb/fabio/releases/tag/v1.0.4) - 03 Nov 2015
-
-#### Features
-
- * [Issue #8](https://github.com/fabiolb/fabio/issues/8): Add support for SSL client certificate authentication
-
-### [v1.0.3](https://github.com/fabiolb/fabio/releases/tag/v1.0.3) - 25 Oct 2015
-
-#### Improvements
-
- * Add Docker support and official Docker image `magiconair/fabio`
-
- * [PR #5](https://github.com/fabiolb/fabio/pull/5): Fix typo
-
-### [v1.0.2](https://github.com/fabiolb/fabio/releases/tag/v1.0.2) - 23 Oct 2015
-
-#### Improvements
-
- * [PR #3](https://github.com/fabiolb/fabio/pull/3): Honor consul.url and consul.addr from config file ([@jeinwag](https://github.com/jeinwag))
-
-### [v1.0.1](https://github.com/fabiolb/fabio/releases/tag/v1.0.1) - 21 Oct 2015
-
-#### Improvements
-
- * Honor maintenance mode for both services and nodes
-
-### [v1.0.0](https://github.com/fabiolb/fabio/releases/tag/v1.0.0) - 16 Oct 2015
-
- * Initial open-source release
+\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator)*
