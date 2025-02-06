@@ -117,7 +117,11 @@ func (p *HTTPProxy) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if !t.Authorized(r, w, p.AuthSchemes) {
+	authDecision := t.Authorized(r, w, p.AuthSchemes)
+	if authDecision.Done {
+		return
+	}
+	if !authDecision.Authorized {
 		http.Error(w, "authorization failed", http.StatusUnauthorized)
 		return
 	}

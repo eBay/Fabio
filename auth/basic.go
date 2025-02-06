@@ -74,13 +74,17 @@ func newBasicAuth(cfg config.BasicAuth) (AuthScheme, error) {
 	}, nil
 }
 
-func (b *basic) Authorized(request *http.Request, response http.ResponseWriter) bool {
+func (b *basic) Authorized(request *http.Request, response http.ResponseWriter) AuthDecision {
 	user, password, ok := request.BasicAuth()
 
 	if !ok {
 		response.Header().Set("WWW-Authenticate", "Basic realm=\""+b.realm+"\"")
-		return false
+		return unauthorized()
 	}
 
-	return b.secrets.Match(user, password)
+	if b.secrets.Match(user, password) {
+		return authorized()
+	} else {
+		return unauthorized()
+	}
 }

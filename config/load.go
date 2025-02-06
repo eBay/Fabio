@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"net/url"
 	"regexp"
 	"runtime"
 	"strconv"
@@ -714,7 +715,23 @@ func parseAuthScheme(cfg map[string]string) (a AuthScheme, err error) {
 			}
 			a.Basic.Refresh = d
 		}
+	case "external":
+		a.External = ExternalAuth{
+			Endpoint:          cfg["endpoint"],
+			AppendAuthHeaders: strings.Split(cfg["append-auth-headers"], ","),
+			SetAuthHeaders:    strings.Split(cfg["set-auth-headers"], ","),
+		}
 
+		if strings.HasSuffix(a.External.Endpoint, "/") {
+			return AuthScheme{}, errors.New("decision auth endpoint should not end with /")
+		}
+		if _, err := url.Parse(a.External.Endpoint); err != nil {
+			return AuthScheme{}, err
+		}
+
+		if a.External.Endpoint == "" {
+			return AuthScheme{}, fmt.Errorf("missing 'endpoint' in auth '%s'", a.Name)
+		}
 	default:
 		return AuthScheme{}, fmt.Errorf("unknown auth type '%s'", a.Type)
 	}

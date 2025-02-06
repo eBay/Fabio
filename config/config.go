@@ -212,9 +212,10 @@ type Tracing struct {
 }
 
 type AuthScheme struct {
-	Name  string
-	Type  string
-	Basic BasicAuth
+	Name     string
+	Type     string
+	Basic    BasicAuth
+	External ExternalAuth
 }
 
 type BasicAuth struct {
@@ -222,6 +223,12 @@ type BasicAuth struct {
 	File    string
 	Refresh time.Duration
 	ModTime time.Time // the htpasswd file last modification time
+}
+
+type ExternalAuth struct {
+	Endpoint          string
+	AppendAuthHeaders []string
+	SetAuthHeaders    []string
 }
 
 type ConsulTlS struct {

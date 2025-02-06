@@ -23,6 +23,14 @@ Note: removing the htpasswd file will cause all requests to fail with HTTP statu
 
 Supported htpasswd formats are detailed [here](https://github.com/tg123/go-htpasswd)
 
+#### External
+
+This authorization scheme sends the incoming http request without body to the specified endpoint. The url path is appended to the endpoint value, thus the endpoint value should not end in a `/`. When the endpoint returns with an http 200 status code, the request is regarded as authorized and forwarded. If the endpoint returns with an http 302 status code, the redirection is send back to the client. For any other status code, the request will be regarded as unauthorized.
+
+This scheme supports the `append-auth-headers` and `set-auth-headers` options. These configure headers from the authorization endpoint to copy to the upstream request. The `set-auth-headers` option replaces any header from the original client request, and the `append-auth-headers` option appends the header instead. Multiple headers can be specified separated by commas.
+
+    name=<name>;type=external;endpoint=http://oathkeeper-api:4456/decisions;append-auth-headers=x-user,authorization
+
 #### Examples
 
     # single basic auth scheme
@@ -34,6 +42,9 @@ Supported htpasswd formats are detailed [here](https://github.com/tg123/go-htpas
     # basic auth with multiple schemes
     proxy.auth = name=mybasicauth;type=basic;file=p/creds.htpasswd;refresh=30s
                  name=myotherauth;type=basic;file=p/other-creds.htpasswd;realm=myrealm
+
+    # single ory oathkeeper decision api
+    name=<name>;type=external;endpoint=http://oathkeeper-api:4456/decisions
 
 The default is
 

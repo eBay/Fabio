@@ -12,8 +12,8 @@ type testAuth struct {
 	ok bool
 }
 
-func (t *testAuth) Authorized(r *http.Request, w http.ResponseWriter) bool {
-	return t.ok
+func (t *testAuth) Authorized(r *http.Request, w http.ResponseWriter) auth.AuthDecision {
+	return auth.AuthDecision{Authorized: t.ok, Done: false}
 }
 
 type responseWriter struct {
@@ -74,7 +74,7 @@ func TestTarget_Authorized(t *testing.T) {
 				AuthScheme: tt.authScheme,
 			}
 
-			if got, want := target.Authorized(&http.Request{}, &responseWriter{}, tt.authSchemes), tt.out; !reflect.DeepEqual(got, want) {
+			if got, want := target.Authorized(&http.Request{}, &responseWriter{}, tt.authSchemes), tt.out; !reflect.DeepEqual(got.Authorized, want) {
 				t.Errorf("got %v want %v", got, want)
 			}
 		})
