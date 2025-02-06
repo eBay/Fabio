@@ -72,7 +72,8 @@ func Labels(labels, values []string, stringsprefix, fieldsep, recsep string) str
 // parseNames parses the route metric name template.
 func parseNames(tmpl string) (*template.Template, error) {
 	funcMap := template.FuncMap{
-		"clean": clean,
+		"clean":      clean,
+		"clean_prom": clean_prom,
 	}
 	t, err := template.New("names").Funcs(funcMap).Parse(tmpl)
 	if err != nil {
@@ -124,6 +125,18 @@ func clean(s string) string {
 	}
 	s = strings.Replace(s, ".", "_", -1)
 	s = strings.Replace(s, ":", "_", -1)
+	return strings.ToLower(s)
+}
+
+// clean_prom creates safe names for prometheus reporting by replacing
+// some characters with underscores.
+func clean_prom(s string) string {
+	if s == "" {
+		return "_"
+	}
+	s = strings.Replace(s, ".", "_", -1)
+	s = strings.Replace(s, ":", "_", -1)
+	s = strings.Replace(s, "-", "_", -1)
 	return strings.ToLower(s)
 }
 

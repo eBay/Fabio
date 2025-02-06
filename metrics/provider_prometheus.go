@@ -27,13 +27,13 @@ func NewPromProvider(namespace, subsystem string, buckets []float64) Provider {
 
 func (p *PromProvider) NewCounter(name string, labels ...string) gkm.Counter {
 	copts := promclient.CounterOpts(p.Opts)
-	copts.Name = clean(name)
+	copts.Name = clean_prom(name)
 	return prommetrics.NewCounterFrom(copts, labels)
 }
 
 func (p *PromProvider) NewGauge(name string, labels ...string) gkm.Gauge {
 	gopts := promclient.GaugeOpts(p.Opts)
-	gopts.Name = clean(name)
+	gopts.Name = clean_prom(name)
 	return prommetrics.NewGaugeFrom(gopts, labels)
 }
 
@@ -41,7 +41,7 @@ func (p *PromProvider) NewHistogram(name string, labels ...string) gkm.Histogram
 	hopts := promclient.HistogramOpts{
 		Namespace:   p.Opts.Namespace,
 		Subsystem:   p.Opts.Subsystem,
-		Name:        clean(name),
+		Name:        clean_prom(name),
 		Help:        p.Opts.Help,
 		ConstLabels: p.Opts.ConstLabels,
 		Buckets:     p.Buckets,
