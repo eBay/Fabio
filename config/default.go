@@ -60,8 +60,8 @@ var defaultConfig = &Config{
 	Registry: Registry{
 		Backend: "consul",
 		Consul: Consul{
-			Addr:              "localhost:8500",
-			Scheme:            "http",
+			Addr:              "",
+			Scheme:            "",
 			KVPath:            "/fabio/config",
 			NoRouteHTMLPath:   "/fabio/noroute.html",
 			TagPrefix:         "urlprefix-",
