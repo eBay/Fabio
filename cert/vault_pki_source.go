@@ -69,9 +69,12 @@ func (s *VaultPKISource) Issue(commonName string) (*tls.Certificate, error) {
 
 	b, _ := json.Marshal(resp.Data)
 	var data struct {
+		// Try load from regular vault-pki
 		PrivateKey  string   `json:"private_key"`
 		Certificate string   `json:"certificate"`
 		CAChain     []string `json:"ca_chain"`
+		// Try to load data from acme-vault
+		Certificate2 string `json:"cert"`
 	}
 	if err := json.Unmarshal(b, &data); err != nil {
 		return nil, fmt.Errorf("vault: issue: %s", err)
@@ -80,12 +83,16 @@ func (s *VaultPKISource) Issue(commonName string) (*tls.Certificate, error) {
 	if data.PrivateKey == "" {
 		return nil, fmt.Errorf("vault: issue: missing private key")
 	}
-	if data.Certificate == "" {
+
+	if data.Certificate == "" && data.Certificate2 == "" {
 		return nil, fmt.Errorf("vault: issue: missing certificate")
 	}
 
 	key := []byte(data.PrivateKey)
 	fullChain := []byte(data.Certificate)
+	if data.Certificate2 != "" {
+		fullChain = append(fullChain, data.Certificate2...)
+	}
 	for _, c := range data.CAChain {
 		fullChain = append(fullChain, '\n')
 		fullChain = append(fullChain, []byte(c)...)
