@@ -123,17 +123,17 @@ var fields = map[string]field{
 	},
 	"$response_time_ms": func(b *bytes.Buffer, e *Event) {
 		d := e.End.Sub(e.Start).Nanoseconds()
-		s, µs := d/int64(time.Second), d%int64(time.Second)/int64(time.Millisecond)
+		s, us := d/int64(time.Second), d%int64(time.Second)/int64(time.Millisecond)
 		atoi(b, s, 0)
 		b.WriteRune('.')
-		atoi(b, µs, 3)
+		atoi(b, us, 3)
 	},
 	"$response_time_us": func(b *bytes.Buffer, e *Event) {
 		d := e.End.Sub(e.Start).Nanoseconds()
-		s, µs := d/int64(time.Second), d%int64(time.Second)/int64(time.Microsecond)
+		s, us := d/int64(time.Second), d%int64(time.Second)/int64(time.Microsecond)
 		atoi(b, s, 0)
 		b.WriteRune('.')
-		atoi(b, µs, 6)
+		atoi(b, us, 6)
 	},
 	"$response_time_ns": func(b *bytes.Buffer, e *Event) {
 		d := e.End.Sub(e.Start).Nanoseconds()
