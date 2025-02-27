@@ -14,7 +14,6 @@ type Config struct {
 	Metrics              Metrics
 	UI                   UI
 	Runtime              Runtime
-	Tracing              Tracing
 	ProfileMode          string
 	ProfilePath          string
 	Insecure             bool
@@ -197,18 +196,6 @@ type Custom struct {
 	PollInterval       time.Duration
 	NoRouteHTML        string
 	Timeout            time.Duration
-}
-
-type Tracing struct {
-	TracingEnabled bool
-	CollectorType  string
-	ConnectString  string
-	ServiceName    string
-	Topic          string
-	SamplerRate    float64
-	SpanHost       string
-	SpanName       string
-	TraceID128Bit  bool
 }
 
 type AuthScheme struct {

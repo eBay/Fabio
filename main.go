@@ -37,7 +37,6 @@ import (
 	"github.com/fabiolb/fabio/registry/file"
 	"github.com/fabiolb/fabio/registry/static"
 	"github.com/fabiolb/fabio/route"
-	"github.com/fabiolb/fabio/trace"
 
 	grpc_proxy "github.com/mwitkow/grpc-proxy/proxy"
 	"github.com/pkg/profile"
@@ -140,9 +139,6 @@ func main() {
 	initRuntime(cfg)
 	initBackend(cfg)
 
-	// init OpenTracing, if enabled
-	trace.InitializeTracer(&cfg.Tracing)
-
 	startAdmin(cfg)
 
 	go watchNoRouteHTML(cfg)
@@ -232,7 +228,7 @@ func newHTTPProxy(cfg *config.Config, statsHandler *proxy.HttpStatsHandler) *pro
 		Transport:         transport.NewTransport(nil),
 		InsecureTransport: transport.NewTransport(&tls.Config{InsecureSkipVerify: true}),
 		Lookup: func(r *http.Request) *route.Target {
-			t := route.GetTable().Lookup(r, r.Header.Get("trace"), pick, match, globCache, cfg.GlobMatchingDisabled)
+			t := route.GetTable().Lookup(r, pick, match, globCache, cfg.GlobMatchingDisabled)
 			if t == nil {
 				statsHandler.Noroute.Add(1)
 				log.Print("[WARN] No route for ", r.Host, r.URL)
@@ -240,7 +236,6 @@ func newHTTPProxy(cfg *config.Config, statsHandler *proxy.HttpStatsHandler) *pro
 			return t
 		},
 		Logger:      l,
-		TracerCfg:   cfg.Tracing,
 		AuthSchemes: authSchemes,
 		Stats:       *statsHandler,
 	}

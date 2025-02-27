@@ -396,15 +396,9 @@ func ReverseHostPort(s string) string {
 // or nil if there is none. It first checks the routes for the host
 // and if none matches then it falls back to generic routes without
 // a host. This is useful for a catch-all '/' rule.
-func (t Table) Lookup(req *http.Request, trace string, pick picker, match matcher, globCache *GlobCache, globDisabled bool) (target *Target) {
+func (t Table) Lookup(req *http.Request, pick picker, match matcher, globCache *GlobCache, globDisabled bool) (target *Target) {
 
 	var hosts []string
-	if trace != "" {
-		if len(trace) > 16 {
-			trace = trace[:15]
-		}
-		log.Printf("[TRACE] %s Tracing %s%s", trace, req.Host, req.URL.Path)
-	}
 
 	// find matching hosts for the request
 	// and add "no host" as the fallback option
@@ -416,12 +410,9 @@ func (t Table) Lookup(req *http.Request, trace string, pick picker, match matche
 		hosts = t.matchingHosts(req, globCache)
 	}
 
-	if trace != "" {
-		log.Printf("[TRACE] %s Matching hosts: %v", trace, hosts)
-	}
 	hosts = append(hosts, "")
 	for _, h := range hosts {
-		if target = t.lookup(h, req.URL.Path, trace, pick, match); target != nil {
+		if target = t.lookup(h, req.URL.Path, pick, match); target != nil {
 			if target.RedirectCode != 0 {
 				req.URL.Host = req.Host
 				target.BuildRedirectURL(req.URL) // build redirect url and cache in target
@@ -436,18 +427,14 @@ func (t Table) Lookup(req *http.Request, trace string, pick picker, match matche
 		}
 	}
 
-	if target != nil && trace != "" {
-		log.Printf("[TRACE] %s Routing to service %s on %s", trace, target.Service, target.URL)
-	}
-
 	return target
 }
 
 func (t Table) LookupHost(host string, pick picker) *Target {
-	return t.lookup(host, "/", "", pick, prefixMatcher)
+	return t.lookup(host, "/", pick, prefixMatcher)
 }
 
-func (t Table) lookup(host, path, trace string, pick picker, match matcher) *Target {
+func (t Table) lookup(host, path string, pick picker, match matcher) *Target {
 	host = strings.ToLower(host) // routes are always added lowercase
 	for _, r := range t[host] {
 		if match(path, r) {
@@ -462,13 +449,7 @@ func (t Table) lookup(host, path, trace string, pick picker, match matcher) *Tar
 			} else {
 				target = pick(r)
 			}
-			if trace != "" {
-				log.Printf("[TRACE] %s Match %s%s", trace, r.Host, r.Path)
-			}
 			return target
-		}
-		if trace != "" {
-			log.Printf("[TRACE] %s No match %s%s", trace, r.Host, r.Path)
 		}
 	}
 	return nil

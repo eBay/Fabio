@@ -50,7 +50,7 @@ route add tcproute example2.com/ tcp://%s opts "proto=tcp"`
 	table, _ := route.NewTable(bytes.NewBufferString(fmt.Sprintf(tpl, httpServer.URL, tcpServer.Listener.Addr())))
 	hp := &HTTPProxy{
 		Lookup: func(r *http.Request) *route.Target {
-			return table.Lookup(r, "", route.Picker["rr"], route.Matcher["prefix"], globCache, globEnabled)
+			return table.Lookup(r, route.Picker["rr"], route.Matcher["prefix"], globCache, globEnabled)
 		},
 	}
 
