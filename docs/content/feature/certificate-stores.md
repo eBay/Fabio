@@ -192,6 +192,16 @@ certificates are stored, for example:
       path "secret/fabio/cert/*" {
         capabilities = ["read"]
       }
+      
+      # To check for kv version in newer vault instances
+      path "sys/internal/ui/mounts/secret/fabio/certs" {
+        capabilities = ["read"]
+      }
+      
+      # Allow our own token to be renewed.
+      path "auth/token/renew-self" {
+        capabilities = ["update"]
+      }
 
 ##### Example
 
