@@ -114,7 +114,10 @@ func parseURLPrefixTag(s, prefix string, env map[string]string) (route, opts str
 	expand := func(s string) string {
 		return os.Expand(s, func(x string) string {
 			if env == nil {
-				return ""
+				return "$" + x
+			}
+			if _, ok := env[x]; !ok {
+				return "$" + x
 			}
 			return env[x]
 		})
