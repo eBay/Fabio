@@ -726,7 +726,7 @@ func TestLoad(t *testing.T) {
 			},
 		},
 		{
-			args: []string{"-registry.custom.pollinterval", "5s"},
+			args: []string{"-registry.custom.pollInterval", "5s"},
 			cfg: func(cfg *Config) *Config {
 				cfg.Registry.Custom.PollInterval = 5 * time.Second
 				return cfg
@@ -747,7 +747,7 @@ func TestLoad(t *testing.T) {
 			},
 		},
 		{
-			args: []string{"-registry.consul.pollinterval", "5s"},
+			args: []string{"-registry.consul.pollInterval", "5s"},
 			cfg: func(cfg *Config) *Config {
 				cfg.Registry.Consul.PollInterval = 5 * time.Second
 				return cfg

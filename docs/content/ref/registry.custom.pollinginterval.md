@@ -1,9 +1,9 @@
 ---
-title: "registry.custom.pollinterval"
+title: "registry.custom.pollInterval"
 ---
 
-`registry.custom.pollinterval` is the length of time between API calls
+`registry.custom.pollInterval` is the length of time between API calls
 
 The default is
 
-    registry.custom.pollinterval = 10s
+    registry.custom.pollInterval = 10s

@@ -214,7 +214,7 @@ func load(cmdline, environ, envprefix []string, props *properties.Properties) (c
 	f.StringVar(&obsoleteStr, "registry.consul.register.checkDeregisterCriticalServiceAfter", "", "This option is deprecated and has no effect.")
 	f.StringVar(&cfg.Registry.Consul.ChecksRequired, "registry.consul.checksRequired", defaultConfig.Registry.Consul.ChecksRequired, "number of checks which must pass: one or all")
 	f.IntVar(&cfg.Registry.Consul.ServiceMonitors, "registry.consul.serviceMonitors", defaultConfig.Registry.Consul.ServiceMonitors, "concurrency for route updates")
-	f.DurationVar(&cfg.Registry.Consul.PollInterval, "registry.consul.pollinterval", defaultConfig.Registry.Consul.PollInterval, "poll interval for route updates")
+	f.DurationVar(&cfg.Registry.Consul.PollInterval, "registry.consul.pollInterval", defaultConfig.Registry.Consul.PollInterval, "poll interval for route updates")
 	f.BoolVar(&cfg.Registry.Consul.RequireConsistent, "registry.consul.requireConsistent", defaultConfig.Registry.Consul.RequireConsistent, "is consistent read mode on consul queries required")
 	f.BoolVar(&cfg.Registry.Consul.AllowStale, "registry.consul.allowStale", defaultConfig.Registry.Consul.AllowStale, "is stale read mode on consul queries allowed")
 	f.IntVar(&cfg.Runtime.GOGC, "runtime.gogc", defaultConfig.Runtime.GOGC, "sets runtime.GOGC")
@@ -249,7 +249,7 @@ func load(cmdline, environ, envprefix []string, props *properties.Properties) (c
 	f.StringVar(&cfg.Registry.Custom.NoRouteHTML, "registry.custom.noroutehtml", defaultConfig.Registry.Custom.NoRouteHTML, "path to file for HTML returned when no route is found")
 	f.BoolVar(&cfg.Registry.Custom.CheckTLSSkipVerify, "registry.custom.checkTLSSkipVerify", defaultConfig.Registry.Custom.CheckTLSSkipVerify, "custom back end check TLS verification")
 	f.DurationVar(&cfg.Registry.Custom.Timeout, "registry.custom.timeout", defaultConfig.Registry.Custom.Timeout, "timeout for API request to custom back end")
-	f.DurationVar(&cfg.Registry.Custom.PollInterval, "registry.custom.pollinterval", defaultConfig.Registry.Custom.PollInterval, "poll interval for API request to custom back end")
+	f.DurationVar(&cfg.Registry.Custom.PollInterval, "registry.custom.pollInterval", defaultConfig.Registry.Custom.PollInterval, "poll interval for API request to custom back end")
 	f.StringVar(&cfg.Registry.Custom.Path, "registry.custom.path", defaultConfig.Registry.Custom.Path, "custom back end path in the URL")
 	f.StringVar(&cfg.Registry.Custom.QueryParams, "registry.custom.queryparams", defaultConfig.Registry.Custom.QueryParams, "custom back end query parameters in the URL")
 
