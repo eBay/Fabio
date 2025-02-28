@@ -33,7 +33,7 @@ func TestGracefulShutdown(t *testing.T) {
 			Transport: http.DefaultTransport,
 			Lookup: func(r *http.Request) *route.Target {
 				tbl, _ := route.NewTable(bytes.NewBufferString("route add svc / " + srv.URL))
-				return tbl.Lookup(r, "", route.Picker["rr"], route.Matcher["prefix"], globCache, globEnabled)
+				return tbl.Lookup(r, route.Picker["rr"], route.Matcher["prefix"], globCache, globEnabled)
 			},
 		}
 		l := config.Listen{Addr: addr}

@@ -111,18 +111,6 @@ var defaultConfig = &Config{
 		},
 	},
 
-	Tracing: Tracing{
-		TracingEnabled: false,
-		CollectorType:  "http",
-		ConnectString:  "http://localhost:9411/api/v1/spans",
-		ServiceName:    "Fabiolb",
-		Topic:          "Fabiolb-Kafka-Topic",
-		SamplerRate:    -1,
-		SpanHost:       "localhost:9998",
-		SpanName:       "",
-		TraceID128Bit:  true,
-	},
-
 	GlobCacheSize: 1000,
 
 	BGP: BGP{

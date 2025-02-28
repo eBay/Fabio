@@ -162,7 +162,7 @@ func (g GrpcProxyInterceptor) lookup(ctx context.Context, fullMethodName string)
 		Header: headers,
 	}
 
-	return route.GetTable().Lookup(req, req.Header.Get("trace"), pick, match, g.GlobCache, g.Config.GlobMatchingDisabled), nil
+	return route.GetTable().Lookup(req, pick, match, g.GlobCache, g.Config.GlobMatchingDisabled), nil
 }
 
 // grpc client can specify a destination host in metadata by key 'dsthost', e.g. dsthost=betatest
